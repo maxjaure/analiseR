@@ -1,0 +1,331 @@
+#+title: Funções reais de uma variável real
+#+author: Max Jauregui
+#+language: pt_BR
+#+LATEX_CLASS_OPTIONS: [12pt,a4paper]
+#+latex_header: \setlength{\parindent}{0em}
+#+latex_header: \setlength{\parskip}{1ex}
+#+latex_header: \usepackage[portuguese]{babel}
+#+latex_header: \usepackage[stable]{footmisc}
+#+latex_header: \usepackage{mathabx}
+
+# This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+* Definições básicas
+
+Uma função $f:A\to B$ é dita uma *função real* se $B\subset\mathbb{R}$.
+Se além disso $A\subset\mathbb{R}$, diz-se que $f$ é uma *função real de uma variável real*.
+De aqui em diante qualquer função será uma função real de uma variável real a menos que se indique explícitamente outra coisa.
+Na prática, é comum definir uma função $f$ simplesmente por uma equação da forma
+$$f(x)=\text{expressão envolvendo a variável }x\,.$$
+Nesse caso, assume-se que o domínio de $f$ é o conjunto de todos os $x\in\mathbb{R}$ para os quais a expressão do lado direito retorna um número real.
+O contradomínio de $f$ pode ser em princípio qualquer conjunto que contenha a imagem de $f$; por exemplo, o próprio conjunto $\mathbb{R}$.
+
+*Exemplo.* A equação
+$$f(x)=\frac{3}{x-2}$$
+define uma função $f$ cujo domínio é o conjunto $A$ formado por todos os $x\in\mathbb{R}$ tais que $x-2\ne 0$. Assim, $A=\mathbb{R}-\{2\}$.
+
+Uma função $f:A\to \mathbb{R}$ pode ser representada graficamente localizando os pares ordenados $(x,f(x))$, com $x\in A$, no plano cartesiano.
+Tipicamente, esse processo gera uma curva, a qual é chamada de *gráfico* de $f$.
+Como para cada $x\in A$, existe um único par ordenado $(x,f(x))$, o gráfico de $f$ pode ser intersetado por qualquer reta vertical em no máximo um ponto.
+
+* Funções lineares
+
+Diz-se que uma função $f$ é uma *função linear* se existem constantes $a,b\in\mathbb{R}$ tais que $f(x)=ax+b$.
+O domínio de qualquer função linear é $\mathbb{R}$. Se $a\ne 0$, a imagem da função linear $f(x)=ax+b$ é $\mathbb{R}$; caso contrário, a imagem de $f$ é $\{b\}$.
+Nesse último caso, diz-se que $f$ é uma *função constante*.
+
+*Exemplo.* A figura [[fig1]] mostra os gráficos das funções lineares $f(x)=2x+1$, $g(x)=-x+2$ e $h(x)=3$. Notamos que em todos os casos, o gráfico é uma reta.
+#+begin_src python :session :exports none
+  import numpy as np
+  import matplotlib.pyplot as plt
+
+  x = np.linspace(0,4,50)
+  y1 = 2*x+1
+  y2 = -x+2
+  y3 = 3+x-x
+  fig, ax = plt.subplots(1,3,figsize=(10,3))
+  ax[0].plot(x,y1,label=r"$y=f(x)$")
+  ax[1].plot(x,y2,color="C1",label=r"$y=g(x)$")
+  ax[2].plot(x,y3,color="C2",label=r"$y=h(x)$")
+  ax[0].legend()
+  ax[1].legend()
+  ax[2].legend()
+  plt.subplots_adjust(wspace=0.3)
+  fname = "1-fig1.png"
+  fig.savefig(fname,bbox_inches="tight")
+  plt.close()
+#+end_src
+
+#+name: fig1
+#+caption: Gráficos das funções lineares $f(x)=2x+1$, $g(x)=-x+2$ e $h(x)=3$.
+#+attr_latex: :width \textwidth
+[[./1-fig1.png]]
+
+Se uma reta passa por dois pontos $(x_1,y_1)$ e $(x_2,y_2)$, como mostrado na figura [[fig2]], define-se a inclinação dessa reta por
+$$m=\frac{\Delta y}{\Delta x}=\frac{y_2-y_1}{x_2-x_1}\,.$$
+Pode-se verificar que a inclinação da reta não depende da escolha dos pontos $(x_1,y_1)$ e $(x_2,y_2)$, desde que eles pertençam à reta.
+Como o gráfico de uma função linear $f(x)=ax+b$ é uma reta que passa pelos pontos $(0,b)$ e $(1,a+b)$, a inclinação dessa reta será
+$$m=\frac{a+b-b}{1-0}=a\,.$$
+Portanto, o gráfico da função linear $f(x)=ax+b$ é uma reta com inclinação $a$ que passa pelo ponto $(0,b)$, ou seja, a reta corta o eixo $y$ no valor $y=b$.
+#+begin_src python :session :exports none
+  x = np.linspace(0,4,50)
+  y = 2*x+1
+  fig, ax = plt.subplots(1,1,figsize=(3,3))
+  ax.plot(x,y)
+  ax.plot(1,3,"o",color="C1")
+  ax.plot(3,7,"o",color="C1")
+  ax.annotate(r"$(x_1,y_1)$",(0.3,3.5))
+  ax.annotate(r"$(x_2,y_2)$",(3.1,6.5))
+  ax.axhline(3,color="k",ls="--")
+  ax.axvline(3,color="k",ls="--")
+  ax.set_xticks([])
+  ax.set_yticks([])
+  fname = "1-fig2.png"
+  fig.savefig(fname,bbox_inches="tight")
+  plt.close()
+#+end_src
+
+#+name: fig2
+#+caption: Inclinação de uma reta.
+#+attr_latex: :width 0.4\textwidth
+[[./1-fig2.png]]
+
+*Exemplo.* Vamos encontrar a função linear cujo gráfico é uma reta que passa pelos pontos $(1,3)$ e $(-2,1)$.
+Primeiro encontramos que a inclinação da reta é
+$$m=\frac{3-1}{1-(-2)}=\frac{2}{3}\,.$$
+Logo, a função linear que procuramos deve ter a forma $f(x)=\frac{2}{3}x+b$.
+Para determinar $b$ usamos, por exemplo, o fato de que a reta passa pelo ponto $(1,3)$, ou seja, $f(1)=3$.
+Com isso, temos que
+$$3=\frac{2}{3}(1)+b\quad\Rightarrow\quad b=\frac{7}{3}\,.$$
+Portanto, a função linear desejada é $f(x)=\frac{2}{3}x+\frac{7}{3}$.
+
+Diz-se que uma função $f:A\to\mathbb{R}$ é *crescente* em um conjunto $E\subset A$ se, para quaisquer $x_1,x_2\in E$ com $x_1< x_2$, tem-se que $f(x_1)< f(x_2)$.
+Analogamente, diz-se que $f$ é *decrescente* em um conjunto $E\subset A$ se, para quaisquer $x_1,x_2\in E$ com $x_1< x_2$, tem-se que $f(x_1)> f(x_2)$.
+
+*Exemplo.* Uma função linear $f(x)=ax+b$ é crescente em $\mathbb{R}$ se $a>0$, e é decrescente se $a< 0$.
+
+* Funções polinomiais
+
+Diz-se que uma função $f$ é uma *função polinomial* se existem constantes $a_0,a_1,\ldots,a_n\in\mathbb{R}$ tais que
+$$f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\,.$$
+Os números $a_0,a_1,\ldots,a_n$ são chamados de *coeficientes*; porém, especialmente o coeficiente $a_0$ é chamado de *termo independente*.
+Se $a_n\ne 0$, diz-se que $f$ é uma função polinomial de *grau* $n$.
+O domínio de qualquer função polinomial é $\mathbb{R}$.
+Se o grau de uma função polinomial $f$ é ímpar, a sua imagem também é $\mathbb{R}$. 
+Por outro lado, se o grau de $f$ é par, só uma das seguintes afirmações é verdadeira:
+
+1. existe $x_0\in\mathbb{R}$ tal que $f(x_0)\ge f(x)$ para todo $x\in\mathbb{R}$, ou seja, $f$ atinge seu *máximo absoluto* em um ponto $x_0$.
+2. existe $x_0\in\mathbb{R}$ tal que $f(x_0)\le f(x)$ para todo $x\in\mathbb{R}$, ou seja, $f$ atinge seu *mínimo absoluto* em um ponto $x_0$.
+
+No primeiro caso a imagem de $f$ é o intervalo $(-\infty,f(x_0)]$. No segundo caso, a imagem de $f$ é o intervalo $[f(x_0),\infty)$.
+
+*Exemplo.* A figura [[fig3]] mostra o gráfico da função $f_n(x)=x^n$ para alguns valores inteiros $n>0$.
+Dessa figura observamos o seguinte:
+
+1. $f_n$ é crescente em $\mathbb{R}$ se $n$ é ímpar; enquanto que $f_n$ é decrescente em $(-\infty,0]$ e crescente em $[0,\infty)$ se $n$ é par.
+2. O gráfico de $f_n$ é simétrico em relação à origem se $n$ é ímpar. Por outro lado, se $n$ é par, o gráfico de $f_n$ é simétrico em relação ao eixo $y$.
+3. Se $x>1$, então $f_{n+1}(x)>f_n(x)$, ou seja, $x^{n+1}>x_n$.
+4. Se $0<x<1$, então $f_{n+1}(x)< f_n(x)$, ou seja, $x^{n+1}< x_n$.
+
+#+begin_src python :session :exports none
+  x = np.linspace(-1.2,1.2,50)
+  y1 = x
+  y2 = x**3
+  y3 = x**5
+  y4 = x**7
+  fig, ax = plt.subplots(1,3,figsize=(10,3))
+  ax[0].plot(x,y1,label=r"$y=x$")
+  ax[0].plot(x,y2,label=r"$y=x^3$")
+  ax[0].plot(x,y3,label=r"$y=x^5$")
+  ax[0].plot(x,y4,label=r"$y=x^7$")
+  ax[0].legend()
+  ax[0].axhline(0,color="k",ls="--")
+  ax[0].axvline(0,color="k",ls="--")
+  y1 = x**2
+  y2 = x**4
+  y3 = x**6
+  y4 = x**8
+  fig, ax = plt.subplots(1,2,figsize(6,3))
+  ax[1].plot(x,y1,label=r"$y=x^2$")
+  ax[1].plot(x,y2,label=r"$y=x^4$")
+  ax[1].plot(x,y3,label=r"$y=x^6$")
+  ax[1].plot(x,y4,label=r"$y=x^8$")
+  ax[1].legend()
+  ax[1].axhline(0,color="k",ls="--")
+  ax[1].axvline(0,color="k",ls="--")
+  x = np.linspace(0,1.2,50)
+  y1 = x**2
+  y2 = x**3
+  y3 = x**4
+  y4 = x**5
+  ax[2].plot(x,y1,label=r"$y=x^2$")
+  ax[2].plot(x,y2,label=r"$y=x^3$")
+  ax[2].plot(x,y3,label=r"$y=x^4$")
+  ax[2].plot(x,y4,label=r"$y=x^5$")
+  ax[2].legend()
+  ax[2].axhline(0,color="k",ls="--")
+  ax[2].axvline(0,color="k",ls="--")
+  ax[2].axvline(1,color="k",ls="--")
+  fname = "1-fig3.png"
+  fig.savefig(fname,bbox_inches="tight")
+  plt.close()
+#+end_src
+
+#+name: fig3
+#+caption: Gráficos das funções $f_n(x)=x^n$ para alguns valores de $n$.
+#+attr_latex: :width \textwidth
+[[./1-fig3.png]]
+
+*Exemplo.* Uma função polinomial de grau $2$ é chamada de uma *função quadrática*.
+Vamos encontrar a imagem da função quadrática
+$$f(x)=2x^2-3x+2\,.$$
+Para isso é conveniente escrevermos a expressão de $f$ na forma
+$$f(x)=2\left[x^2-\frac{3}{2}x\right]+2\,.$$
+Agora vamos completar o quadrado dentro da expressão em colchetes:
+\begin{equation*}
+  \begin{split}
+    f(x)&=2\left[x^2-\frac{3}{2}x+\left(\frac{3}{4}\right)^2-\left(\frac{3}{4}\right)^2\right]+2\\
+        &=2\left[\left(x-\frac{3}{4}\right)^2-\left(\frac{3}{4}\right)^2\right]+2\\
+    &=2\left(x-\frac{3}{4}\right)^2+\frac{7}{8}\,.
+  \end{split}
+\end{equation*}
+Como $(x-\frac{3}{4})^2\ge 0$ para todo $x\in\mathbb{R}$, o mínimo absoluto de $f$ será atingido quando $x=3/4$.
+Além disso, podemos verificar imediatamente que $f(3/4)=7/8$.
+Portanto, a imagem de $f$ é o intervalo $[7/8,\infty)$. 
+A figura [[fig4]] mostra o gráfico de $f$, que é uma curva chamada de *parábola*.
+
+#+begin_src python :session :exports none
+  x = np.linspace(-1/2,2,100)
+  y = 2*x**2-3*x+2
+  fig, ax = plt.subplots(1,1,figsize=(3,3))
+  ax.plot(x,y)
+  ax.axhline(0,color="k",ls="--")
+  ax.axvline(0,color="k",ls="--")
+  fname = "1-fig4.png"
+  fig.savefig(fname,bbox_inches="tight")
+  plt.close()
+#+end_src
+
+#+name: fig4
+#+caption: Gráfico da função quadrática $f(x)=2x^2-3x+2$.
+#+attr_latex: :width 0.4\textwidth
+[[./1-fig4.png]]
+
+Seja $f$ uma função polinomial.
+Diz-se que um ponto $a\in\mathbb{R}$ é uma *raiz* de $f$ se $f(a)=0$. 
+Geometricamente, as raízes de uma função polinomial são os valores de $x$ nos quais o gráfico da função polinomial interseta com o eixo $x$.
+O seguinte resultado, que não provaremos aqui, é uma consequência do chamado *teorema fundamental da álgebra*:
+
+*Teorema.* Toda função polinomial de grau $n$ tem no máximo $n$ raízes reais.
+
+As seguintes afirmações também podem ser úteis para determinar as raízes de uma função polinomial:
+
+*Teorema.* Toda função polinomial de grau ímpar tem pelo menos uma raiz real.
+
+*Teorema.* Seja a função polinomial
+$$f(x)=a_nx^n+\cdots+a_1x+a_0\,,$$
+em que $a_0,a_1,\ldots,a_n\in\mathbb{Z}$, $a_0\ne 0$ e $a_n\ne 0$.
+O conjunto das possíveis raízes racionais de $f$ é
+$$\left\{\frac{p}{q}:p\text{ é um divisor de }a_0\text{ e }q\text{ é um divisor de }a_n\right\}\,.$$
+
+*Demonstração.* Sejam $p$ e $q\ne 0$ inteiros tais que $p/q$ seja uma raiz de $f$. Logo, $f(p/q)=0$, ou seja,
+\begin{equation}
+  \label{eq1}
+  a_n\frac{p^n}{q^n}+a_{n-1}\frac{p^{n-1}}{q^{n-1}}+\cdots+a_1\frac{p}{q}+a_0=0
+\end{equation}
+Multiplicando essa equação por $q^{n-1}$, temos que
+$$\frac{a_np^n}{q}+a_{n-1}p^{n-1}+\cdots+a_1pq^{n-2}+a_0q^{n-1}=0\,.$$
+Como $a_{n-1}p^{n-1},\ldots,a_1p^{n-2}$ e $a_0q^{n-1}$ são inteiros, o número $\frac{a_np^n}{q}$ também deve ser inteiro para que a equação seja verdadeira.
+Logo, $q$ deve ser um divisor de $a_np^n$.
+Segue daqui que $q=1$ ou $q$ é um divisor de $a_n$, pois, se $q\ne 1$, podemos assumir que $p$ e $q$ não têm fatores em comum.
+Assim, em ambos os casos $q$ é um divisor de $a_n$. Se agora multiplicamos a Eq. (\ref{eq1}) por $\frac{q^n}{p}$ (devemos ter $p\ne 0$, senão a Eq. (\ref{eq1}) seria falsa), temos que
+$$a_np^{n-1}+a_{n-1}p^{n-2}q+\cdots+a_1q^{n-1}+a_0\frac{q^n}{p}=0\,.$$
+Daqui podemos concluir que $p$ deve ser um divisor de $a_0$. $\blacksquare$
+
+*Exemplo.* Vamos encontrar as raízes da função
+$$f(x)=x^3-5x^2+2x+8\,.$$
+Primeiramente observamos que o conjunto das possíveis raízes racionais de $f$ é $\{\pm 1,\pm 2,\pm 4,\pm 8\}$.
+Usando os elementos desse conjunto, podemos verificar que $-1$ é uma raiz de $f$.
+Isso quer dizer que a divisão $\frac{f(x)}{x-(-1)}$ é exata. De fato, usando o método de Ruffini, temos que
+$$\begin{matrix}
+&|&1&-5&2&8\\
+-1&|&&-1&6&-8\\
+\hline\\
+&|&1&-6&8&0
+\end{matrix}$$
+Logo,
+$$\frac{f(x)}{x+1}=x^2-6x+8\quad\Rightarrow\quad f(x)=(x+1)(x^2-6x+8)\,.$$
+Para obter as raízes restantes, caso existam, devemos resolver a equação $f(x)=0$ para a variável $x$.
+Assim, temos que
+$$(x+1)(x^2-6x+8)=0\,.$$
+Segue daqui que $x+1=0$ ou $x^2-6x+8=0$. Da primeira igualdade obtemos $x=-1$ (que é a raiz de $f$ que já foi encontrada) e da segunda igualdade obtemos que
+$$x=\frac{-(-6)\pm\sqrt{(-6)^2-4(1)(8)}}{2(1)}\,,$$
+de onde segue que $x=2$ ou $x=4$. Portanto, as raízes de $f$ são $-1,2$ e $4$.
+Consequentemente, o gráfico de $f$ (ver figura [[fig5]]) interseta o eixo $x$ nos valores $x=-1$, $x=2$ e $x=4$.
+
+#+begin_src python :session :exports none
+  x = np.linspace(-2,5)
+  y = x**3-5*x**2+2*x+8
+  fig, ax = plt.subplots(1,1,figsize=(3,3))
+  ax.plot(x,y)
+  ax.axhline(0,color="k",ls="--")
+  ax.axvline(0,color="k",ls="--")
+  fname = "1-fig5.png"
+  fig.savefig(fname,bbox_inches="tight")
+  plt.close()
+#+end_src
+
+#+name: fig5
+#+caption: Gráfico da função $f(x)=x^3-5x^2+2x+8$.
+#+attr_latex: :width 0.4\textwidth
+[[./1-fig5.png]]
+
+* Funções racionais
+
+Diz-se que uma função $f$ é uma *função racional* se existem funções polinomiais $p$ e $q$ tais que
+$$f(x)=\frac{p(x)}{q(x)}\,.$$
+O domínio de $f$ é o conjunto $\{x\in\mathbb{R}:q(x)\ne 0\}$.
+
+*Exercício.* Determine o domínio da função racional
+$$f(x)=\frac{x^5-2x^3+4x^2-1}{3x^2-4x-4}\,.$$
+
+*Exemplo.* A figura [[fig6]] mostra o gráfico das funções $f(x)=1/x$ e $g(x)=1/x^2$.
+Notamos que $f(x)$ assume valores positivos grandes se consideramos valores de $x$ positivos próximos de $0$.
+Além disso, $f(x)$ assume valores negativos grandes se consideramos valores de $x$ negativos próximos de $0$.
+Por outro lado, $g(x)$ assume valores grandes positivos se consideramos valores de $x$ próximos de $0$ de qualquer sinal.
+
+#+begin_src python :session :exports none
+  x1 = np.linspace(-2,-0.1)
+  x2 = np.linspace(0.1,2)
+  y1 = 1/x1
+  y2 = 1/x2
+  fig, ax = plt.subplots(1,1,figsize=(3,3))
+  ax.plot(x1,y1)
+  ax.plot(x2,y2,color="C0",label=r"$y=\frac{1}{x}$")
+  y1 = 1/x1**2
+  y2 = 1/x2**2
+  ax.plot(x1,y1,color="C1")
+  ax.plot(x2,y2,color="C1",label=r"$y=\frac{1}{x^2}$")
+  ax.axhline(0,color="k",ls="--")
+  ax.axvline(0,color="k",ls="--")
+  ax.set_ylim([-10,10])
+  ax.legend(loc="lower right")
+  fname = "1-fig6.png"
+  fig.savefig(fname,bbox_inches="tight")
+  plt.close()
+#+end_src
+
+#+name: fig6
+#+caption: Gráficos das funções $f(x)=1/x$ e $g(x)=1/x^2$.
+#+attr_latex: :width 0.4\textwidth
+[[./1-fig6.png]]
+
+* Funções algébricas
+
+Dado um inteiro $n>0$, consideremos a função $f_n:[0,\infty)\to[0,\infty)$ definida por $f_n(x)=x^n$.
+Sabemos que essa função é sobrejetiva e é crescente no seu domínio (ver figura [[fig3]]).
+Logo, ela também é injetiva e, por conseguinte, é uma bijeção.
+Assim, $f_n$ tem uma inversa $f_n^{-1}:[0,\infty)\to[0,\infty)$ definida por
+$$f_n^{-1}(x)=y\quad\Leftrightarrow\quad y^n=x\,.$$
+A função $f_n^{-1}$ é chamada de função *raiz \(n\)-ésima* e escreve-se
+$$f_n^{-1}(x)=\sqrt[n]{x}\quad\text{ou}\quad f_n^{-1}(x)=x^{1/n}\,.$$

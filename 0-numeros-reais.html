@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt_BR" xml:lang="pt_BR">
+<head>
+<!-- 2022-11-15 Tue 20:44 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Números reais</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Max Jauregui" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Números reais</h1>
+<div id="table-of-contents">
+<h2>&Iacute;ndice</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgb9827d7">1. Linguagem de conjuntos</a></li>
+<li><a href="#orge045839">2. Funções</a></li>
+<li><a href="#orge23168d">3. O corpo dos números reais</a></li>
+<li><a href="#org82aeeb9">4. Conjuntos enumeráveis e não-enumeráveis</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb9827d7" class="outline-2">
+<h2 id="orgb9827d7"><span class="section-number-2">1</span> Linguagem de conjuntos</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Um <b>conjunto</b> \(A\) é uma coleção de objetos quaisquer, chamados de <b>elementos</b> de \(A\).
+Se \(x\) é um elemento de \(A\), diz-se que \(x\) <b>pertence</b> a \(A\) e escreve-se \(x\in A\); caso contrário, escreve-se \(x\not\in A\).
+</p>
+
+<p>
+<b>Exemplo.</b> Se \(A=\{1,2,3\}\), temos que \(1\in A\) e \(4\not\in A\).
+</p>
+
+<p>
+O <b>conjunto vazio</b>, denotado por \(\emptyset\), é o conjunto que não tem elementos.
+</p>
+
+<p>
+Sejam \(A\) e \(B\) conjuntos. Diz-se que \(A\) está <b>contido</b> em \(B\) ou que \(A\) é um <b>subconjunto</b> de \(B\) se \(x\in A\) implica que \(x\in B\).
+</p>
+
+<p>
+<b>Exemplo.</b> Sejam \(A=\{1,2,3\}\), \(B=\{1,2,3,4\}\) e \(C=\{2,3,4,5\}\). Temos que \(A\subset B\); porém, \(A\not\subset C\).
+</p>
+
+<p>
+Sejam \(A\) e \(B\) conjuntos.
+</p>
+
+<ol class="org-ol">
+<li>Define-se a <b>união</b> de \(A\) e \(B\), denotada por \(A\cup B\), como o conjunto formado por todos os elementos de \(A\) e \(B\), ou seja,
+\[A\cup B=\{x:x\in A\text{ ou }x\in B\}\,.\]</li>
+<li>Define-se a <b>interseção</b> de \(A\) e \(B\), denotada por \(A\cap B\), como o conjunto formado por todos os elementos que \(A\) e \(B\) têm em comum, ou seja,
+\[A\cap B=\{x:x\in A\text{ e }x\in B\}\,.\]</li>
+<li>Define-se a <b>diferença</b> \(A-B\) como o conjunto formado por todos os elementos de \(A\) que não pertencem a \(B\), ou seja,
+\[A-B=\{x\in A:x\not\in B\}\,.\]</li>
+<li>Define-se o <b>produto cartesiano</b> \(A\times B\) como o conjunto de todos os pares ordenados \((x,y)\), com \(x\in A\) e \(y\in B\), ou seja,
+\[A\times B=\{(x,y):x\in A\text{ e }y\in B\}\,.\]
+Dois pares ordenados \((x_1,y_1)\) e \((x_2,y_2)\) são iguais se e somente se \(x_1=x_1\) e \(y_1=y_2\).</li>
+</ol>
+
+<p>
+<b>Exemplo.</b> Sejam \(A=\{1,2,3,4\}\) e \(B=\{1,3,5\}\). Temos que \(A\cup B=\{1,2,3,4,5\}\), \(A\cap B=\{1,3\}\), \(A-B=\{2,4\}\), \(B-A=\{5\}\) e
+\[A\times B=\{(1,1),(1,3),(1,5),(2,1),(2,3),(2,5),(3,1),(3,3),(3,5),(4,1),(4,3),(4,5)\}\,.\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge045839" class="outline-2">
+<h2 id="orge045839"><span class="section-number-2">2</span> Funções</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Sejam \(A\) e \(B\) conjuntos. Uma <b>função</b> \(f\) de \(A\) em \(B\) pode ser definida como um subconjunto de \(A\times B\) tal que para cada \(x\in A\) existe um único par ordenado \((x,y)\in f\).
+</p>
+
+<p>
+<b>Exemplo.</b> Se \(A=\{1,2,3\}\) e \(B=\{10,20\}\), o conjunto
+\[f=\{(1,10),(2,10),(3,20)\}\]
+é uma função de \(A\) em \(B\). No entanto, os conjuntos
+\[g=\{(1,10),(1,20),(2,20),(3,20)\}\quad\text{e}\quad h=\{(1,20),(3,20)\}\]
+não são funções de \(A\) em \(B\).
+</p>
+
+<p>
+Seja \(f\) uma função de \(A\) em \(B\). Se \((x,y)\in f\), diz-se que \(y\) é o <b>valor</b> da função \(f\) no ponto \(x\) e escreve-se \(y=f(x)\).
+</p>
+
+<p>
+<b>Exemplo.</b> Para a função \(f\) do exemplo anterior temos que \(f(1)=10\), \(f(2)=10\) e \(f(3)=20\).
+</p>
+
+<p>
+Uma função \(f\) de \(A\) em \(B\) é denotada simbolicamente por \(f:A\to B\).
+O conjunto \(A\) é chamado de <b>domínio</b> de \(f\) e o conjunto \(B\) de <b>contradomínio</b> de \(f\).
+Pode-se definir uma função \(f:A\to B\) fornecendo uma regra que permita encontrar o valor \(f(x)\in B\) para cada \(x\in A\).
+</p>
+
+<p>
+<b>Exemplo.</b> Se \(A=\{1,2,3,4,5\}\) e \(B=\{1,3,5\}\), podemos definir uma função \(f:A\to B\) pondo, por exemplo,
+\[f(x)=\begin{cases}
+1&\text{se }x\text{ é ímpar}\\
+3&\text{se }x\text{ é par.}\\
+\end{cases}\]
+</p>
+
+<p>
+Dada uma função \(f:A\to B\), define-se a <b>imagem de um conjunto</b> \(E\subset A\) por \(f\) como o conjunto
+\[f(E)=\{f(x):x\in A\}\,.\]
+O conjunto \(f(A)\) é chamado de <b>imagem da função</b> \(f\).
+</p>
+
+<p>
+<b>Exemplo.</b> A imagem da função \(f\) do exemplo anterior é o conjunto \(f(A)=\{1,3\}\).
+</p>
+
+<p>
+Diz-se que uma função \(f:A\to B\) é <b>injetiva</b> se para quaisquer \(x_1,x_2\in A\) com \(x_1\ne x_2\) tem-se que \(f(x_1)\ne f(x_2)\).
+</p>
+
+<p>
+<b>Exemplo.</b> Sejam \(A=\{1,2,3\}\) e \(B=\{4,5,6,7\}\). A função \(f:A\to B\) definida por \(f(x)=x+3\) é injetiva.
+No entanto, a função \(g:A\to B\) definida por \(g(x)=6\) não é injetiva.
+</p>
+
+<p>
+Uma função \(f:A\to B\) é dita <b>sobrejetiva</b> se \(f(A)=B\).
+</p>
+
+<p>
+<b>Exemplo.</b> Sejam \(A=\{1,2,3,4\}\) e \(B=\{4,5,6\}\). A função \(f:A\to B\) definida por
+ \[f(x)=\begin{cases}
+x+3&\text{se }x\ne 4\\
+4&\text{se }x=4
+\end{cases}\]
+é sobrejetiva. No entanto, a função \(g:A\to B\), definida por
+\[g(x)=\begin{cases}
+5&\text{se }x\text{ é ímpar}\\
+6&\text{se }x\text{ é par}\\
+\end{cases}\]
+não é sobrejetiva.
+</p>
+
+<p>
+Diz-se que uma função \(f:A\to B\) é <b>bijetiva</b> ou que é uma <b>bijeção</b> se ela é injetiva e sobrejetiva.
+</p>
+
+<p>
+<b>Exemplo.</b> Sejam \(A=\{1,2,3\}\) e \(B=\{4,5,6\}\). A função \(f:A\to B\) definida por \(f(x)=x+3\) é uma bijeção.
+</p>
+
+<p>
+Sejam \(f:A\to B\) e \(g:C\to D\) duas funções. Se \(f(A)\subset C\), define-se a <b>função composta</b> \(g\circ f:A\to D\) por \((g\circ f)(x)=g(f(x))\).
+</p>
+
+<p>
+<b>Exemplo.</b> Dados os conjuntos \(A=\{1,2,3\}\), \(B=\{4,5,6\}\) e \(C=\{2,3,4\}\), consideremos as funções \(f:A\to B\) e \(g:B\to D\) definidas respectivamente por \(f(x)=x+3\) e \(g(x)=x-2\).
+Notamos que \(f(A)=B\) e, por conseguinte, podemos definir a função composta \(g\circ f:A\to C\). De fato, vamos ter que
+\[(g\circ f)(x)=g(x+3)=(x+3)-2=x+1\]
+para todo \(x\in A\). Por outro lado, como \(g(B)=C\not\subset A\), a função composta \(f\circ g:B\to A\) não pode ser definida.
+</p>
+
+<p>
+<b>Teorema.</b> Sejam \(f:A\to B\) e \(g:B\to C\) funções. Tem-se o seguinte:
+</p>
+
+<ol class="org-ol">
+<li>Se \(f\) e \(g\) são injetivas, então \(g\circ f\) também é injetiva.</li>
+<li>Se \(f\) e \(g\) são sobrejetivas, então \(g\circ f\) também é sobrejetiva.</li>
+<li>Se \(f\) e \(g\) são bijeções, então \(g\circ f\) também é uma bijeção.</li>
+</ol>
+
+<p>
+Seja \(f:A\to B\) uma função. Diz-se que uma função \(g:B\to A\) é uma <b>inversa à esquerda</b> de \(f\) se \(g(f(x))=x\) para todo \(x\in A\).
+Por outro lado, diz-se que uma função \(h:B\to A\) é uma <b>inversa à direita</b> de \(f\) se \(f(h(x))=x\) para todo \(x\in B\).
+</p>
+
+<p>
+<b>Teorema.</b> Seja \(f:A\to B\) uma função. Se \(g:B\to A\) é uma inversa à esquerda de \(f\) e \(h:B\to A\) é uma inversa à direita de \(f\), então \(g=h=f^{-1}\).
+Nesse caso, a função \(f^{-1}:B\to A\) é chamada de <b>inversa</b> de \(f\).
+</p>
+
+<p>
+<b>Demonstração.</b> Temos que \(g(f(x))=x\) para todo \(x\in A\) e \(f(h(y))=y\) para todo \(y\in B\). Como \(h(y)\in A\) para todo \(y\in B\), então
+\[g(y)=g(f(h(y)))=h(y)\]
+para todo \(y\in B\). \(\blacksquare\)
+</p>
+
+<p>
+<b>Teorema.</b> Uma função \(f:A\to B\) tem uma inversa à esquerda se, e somente se, é injetiva.
+</p>
+
+<p>
+<b>Demonstração.</b> (\(\Rightarrow\)) Seja \(g:B\to A\) uma inversa à esquerda de \(f\). Se \(x_1,x_2\in A\) são tais que \(f(x_1)=f(x_2)\), então \(x_1=g(f(x_1))=g(f(x_2))=x_2\). Logo, \(f\) é injetiva.
+(\(\Leftarrow\)) Se \(f\) é injetiva, para cada \(y\in f(A)\) existe um único \(x_y\in A\) tal que \(y=f(x_y)\). Definimos então uma função \(g:B\to A\) pondo
+\[g(y)=\begin{cases}
+x_y&\text{se }y\in f(A)\\
+a&\text{se }y\not\in f(A),
+\end{cases}\]
+em que \(a\in A\) é um elemento arbitrário. Como \(g(f(x))=x\) para todo \(x\in A\), temos que \(g\) é uma inversa à esquerda de \(f\). \(\blacksquare\)
+</p>
+
+<p>
+<b>Exemplo.</b> Sejam \(A=\{1,2,3\}\) e \(B=\{4,5,6,7\}\). A função \(f:A\to B\) definida por \(f(x)=x+3\) é injetiva e, por conseguinte, tem uma inversa à esquerda.
+Por exemplo, a função \(g:B\to A\) definida por<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>
+\[g(x)=\begin{cases}
+x-3&\text{se }x\ne 7\\
+1&\text{se }x=7
+\end{cases}\]
+é uma inversa à esquerda de \(f\).
+</p>
+
+<p>
+<b>Teorema.</b> Uma função \(f:A\to B\) tem uma inversa à direita se, e somente se, ela é sobrejetiva.
+</p>
+
+<p>
+<b>Demonstração.</b> (\(\Rightarrow\)) Seja \(g:B\to A\) uma inversa à direita de \(f\).
+Logo, para cada \(y\in B\), temos que \(f(g(y))=y\). Como \(g(y)\in A\), segue que \(f(A)=B\).
+(\(\Leftarrow\)) Se \(f(A)=B\), então para cada \(y\in B\) existe pelo menos um \(x\in A\) tal que \(f(x)=y\).
+Logo, a função \(g:B\to A\) definida por \(g(y)=x_y\), em que \(x_y\in A\) é tal que \(f(x_y)=y\), é uma inversa à direita de \(f\). \(\blacksquare\)
+</p>
+
+<p>
+<b>Exemplo.</b> Sejam \(A=\{1,2,3,4\}\) e \(B=\{4,5,6\}\). A função \(f:A\to B\) definida por
+\[f(x)=\begin{cases}
+x+2&\text{se }x\ne 1\\
+5&\text{se }x=1
+\end{cases}\]
+é sobrejetiva e, por conseguinte, tem uma inversa à direita. Por exemplo, a função \(g:B\to A\) definida por \(g(x)=x-2\) é uma inversa à direita de \(f\).
+</p>
+
+<p>
+<b>Corolário.</b> Uma função \(f:A\to B\) tem inversa se, e somente se, é uma bijeção.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge23168d" class="outline-2">
+<h2 id="orge23168d"><span class="section-number-2">3</span> O corpo dos números reais<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Um conjunto \(F\) é chamado de um <b>corpo</b> se nele estão definidas duas operações, chamadas de <b>adição</b> (\(+\)) e <b>multiplicação</b> (\(\cdot\)), que têm as seguintes propriedades:
+</p>
+
+<ol class="org-ol">
+<li>\(x+y\in F\) para quaisquer \(x,y\in F\);</li>
+<li>\(x+(y+z)=(x+y)+z\) para quaisquer \(x,y,z\in F\);</li>
+<li>\(x+y=y+x\) para quaisquer \(x,y\in F\);</li>
+<li>existe \(0\in F\) tal que \(x+0=x\) para todo \(x\in F\);</li>
+<li>para cada \(x\in F\) existe \(-x\in F\) tal que \(x+(-x)=0\);</li>
+<li>\(xy\in F\) para quaisquer \(x,y\in F\);</li>
+<li>\(x(yz)=(xy)z\) para quaisquer \(x,y,z\in F\);</li>
+<li>\(xy=yx\) para quaisquer \(x,y\in F\);</li>
+<li>existe \(1\in F\), \(1\ne 0\), tal que \(x\cdot 1=x\) para todo \(x\in F\);</li>
+<li>para cada \(x\in F\), \(x\ne 0\), existe \(x^{-1}\in F\) tal que \(xx^{-1}=1\);</li>
+<li>\(x(y+z)=xy+xz\) para quaisquer \(x,y,z\in F\).</li>
+</ol>
+
+<p>
+<b>Exemplo.</b> O conjunto dos números inteiros será denotado por \(\mathbb{Z}\), ou seja,
+\[\mathbb{Z}=\{\ldots,-3,-2,-1,0,1,2,3,\ldots\}\,.\]
+\(\mathbb{Z}\) não é um corpo, pois, por exemplo, \(2\in\mathbb{Z}\) mas não existe \(m\in\mathbb{Z}\) tal que \(2m=1\).
+</p>
+
+<p>
+<b>Exemplo.</b> O conjunto dos números racionais será denotado por \(\mathbb{Q}\), ou seja,
+\[\mathbb{Q}=\left\{\frac{m}{n}:m,n\in\mathbb{Z},n\ne 0\right\}\,.\]
+\(\mathbb{Q}\) é um corpo.
+</p>
+
+<p>
+Um corpo \(F\) é chamado de um <b>corpo ordenado</b> se existe uma <b>ordem</b> \(<\) que tem as seguintes propriedades:
+</p>
+
+<ol class="org-ol">
+<li>dados \(x,y\in F\) quaisquer, só uma das seguintes afirmações é verdadeira: \(x< y\), \(x=y\) ou \(y< x\);</li>
+<li>se \(x,y,z\in F\), \(x< y\) e \(y< z\), então \(x< z\);</li>
+<li>se \(x,y\in F\) e \(x< y\), então \(x+z< y+z\) para todo \(z\in F\);</li>
+<li>se \(x,y,z\in F\), \(x< y\) e \(0< z\), então \(xz< yz\).</li>
+</ol>
+
+<p>
+<b>Exemplo.</b> \(\mathbb{Q}\) é um corpo ordenado.
+</p>
+
+<p>
+Seja \(F\) um corpo ordenado. Diz-se que um conjunto \(A\subset F\) é <b>limitado superiormente</b> se existe \(b\in F\) tal que \(x< b\) para todo \(x\in A\).
+Nesse caso, diz-se também que \(b\) é uma <b>cota superior</b> de \(A\). Seja \(A\subset F\) um conjunto limitado superiormente. Se existe \(\beta\in F\) tal que
+</p>
+
+<ol class="org-ol">
+<li>\(\beta\) é uma cota superior de \(A\);</li>
+<li>se \(b\) é uma cota superior de \(A\), então \(\beta\le b\);</li>
+</ol>
+
+<p>
+então diz-se que \(\beta\) é o <b>supremo</b> de \(A\) e escreve-se \(\beta=\sup A\).
+</p>
+
+<p>
+Diz-se que um conjunto \(A\subset F\) é <b>limitado inferiormente</b> se existe \(a\in F\) tal que \(x> a\) para todo \(x\in A\).
+Nesse caso, diz-se também que \(a\) é uma <b>cota inferior</b> de \(A\). Seja \(A\subset F\) um conjunto limitado inferiormente. Se existe \(\alpha\in F\) tal que
+</p>
+
+<ol class="org-ol">
+<li>\(\alpha\) é uma cota inferior de \(A\);</li>
+<li>se \(\alpha\) é uma cota inferior de \(A\), então \(\alpha\ge a\);</li>
+</ol>
+
+<p>
+então diz-se que \(\alpha\) é o <b>ínfimo</b> de \(A\) e escreve-se \(\alpha=\inf A\).
+</p>
+
+<p>
+Diz-se que um corpo ordenado \(F\) é <b>completo</b> se todo subconjunto de \(F\) não-vazio e limitado superiormente tem um supremo.
+</p>
+
+<p>
+<b>Exemplo.</b> Vamos mostrar que \(\mathbb{Q}\) não é um corpo ordenado completo. Para isso primeiramente vamos mostrar que não existe \(r\in\mathbb{Q}\) tal que \(r^2=2\).
+Se isso fosse verdade existiriam inteiros positivos \(m\) e \(n\) primos relativos tais que \(r=m/n\) e \(r^2=2\). Logo, teríamos que \(m^2=2n^2\) e, por conseguinte, \(m=2k\) para algum inteiro positivo \(k\).
+No entanto, isso implicaria que \(2k^2=n^2\) e, por conseguinte, \(n\) e \(m\) seriam ambos pares, contradizendo a hipótese inicial de que \(m\) e \(n\) eram primos relativos. Portanto, se \(r^2=2\), \(r\) não pode ser racional.
+Agora consideremos o conjunto
+\[A=\{x\in\mathbb{Q}:x^2< 2\}\,.\]
+Notamos que \(A\) é não-vazio e que \(2\) é uma cota superior de \(A\), pois \(x\ge 2\) implica que \(x\not\in A\).
+No entanto, vamos mostrar que \(A\) não tem supremo em \(\mathbb{Q}\).
+Se \(\beta\in\mathbb{Q}\) fosse o supremo de \(A\), em virtude do que mostramos no início do exemplo, só teríamos duas possibilidades: \(\beta^2< 2\) ou \(\beta^2>2\).
+Se \(\beta^2< 2\), podemos encontrar um \(h\in\mathbb{Q}\) tal que \(0< h <1\) e \(\displaystyle h< \frac{2-\beta^2}{2\beta+1}\). Logo,
+\[(\beta+h)^2=\beta^2+2\beta h+h^2< \beta^2+(2\beta+1)h< 2\]
+e, por conseguinte, \(\beta+h\in A\), contradizendo a hipótese de que \(\beta=\sup A\). Por outro lado, se \(\beta^2>2\), podemos encontrar \(h\in\mathbb{Q}\) tal que \(\displaystyle 0< h< \frac{\beta^2-2}{2\beta}\). Logo, se \(x\ge \beta-h\), então
+\[x^2\ge (\beta-h)^2=\beta^2-2\beta h+h^2\ge \beta^2-2\beta h>2\]
+e, por conseguinte, \(\beta-h\) é uma cota superior de \(A\), contradizendo a hipótese de que \(\beta=\sup A\). Portanto, como não podemos ter \(\beta^2< 2\) ou \(\beta^2>2\), o conjunto \(A\) não tem supremo em \(\mathbb{Q}\).
+</p>
+
+<p>
+Define-se o corpo dos <b>números reais</b>, denotado por \(\mathbb{R}\), como um corpo ordenado completo que contém o corpo dos números racionais. O conjunto \(\mathbb{R}-\mathbb{Q}\) é chamado de conjunto dos <b>números irracionais</b>.
+</p>
+
+<p>
+<b>Teorema (\(\mathbb{R}\) é arquimediano).</b> Se \(x,y\in\mathbb{R}\) e \(x>0\), existe um inteiro \(n>0\) tal que \(nx>y\).
+</p>
+
+<p>
+<b>Demonstração.</b> Se \(x>y\), o teorema é trivial. Se \(x< y\), consideremos o conjunto \(A=\{nx\in\mathbb{R}:n\in\mathbb{Z},n>0\}\).
+Temos que \(A\) é não-vazio. Se \(A\) fosse limitado superiormente, existiria \(\beta=\sup A\).
+Logo, como \(\beta-x\) não seria uma cota superior de \(A\), existiria um inteiro \(n>0\) tal que \(\beta-x\le nx\).
+Porém, isso implicaria que \(\beta\le (n+1)x\), contradizendo a hipótese de que \(\beta=\sup A\).
+Logo, \(A\) não pode ser limitado superiormente e, por conseguinte, \(y\) não pode ser uma cota superior de \(A\), ou seja, existe um inteiro \(n>0\) tal que \(nx>y\). \(\blacksquare\)
+</p>
+
+<p>
+<b>Corolário.</b> \(\displaystyle\inf\left\{\frac{1}{n}:n\in\mathbb{Z},n>0\right\}=0\).
+</p>
+
+<p>
+<b>Teorema (\(\mathbb{Q}\) é denso em \(\mathbb{R}\)).</b> Dados \(x,y\in\mathbb{R}\) quaisquer tais que \(x< y\), existe \(r\in\mathbb{Q}\) tal que \(x< r< y\).
+</p>
+
+<p>
+<b>Demonstração.</b> Consideremos inicialmente que \(0\le x< y\). Pelo corolário anterior existe um inteiro \(n>0\) tal que \(1/n< y-x\).
+Consideremos agora o conjunto
+\[A=\left\{m\in\mathbb{Z}:m>0,\frac{m}{n}\ge y\right\}\,.\]
+Como \(\mathbb{R}\) é arquimediano, temos que \(A\) é não-vazio. Seja \(m_0\) o menor elemento de \(A\). Logo, temos que \(\frac{m_0-1}{n}< y\).
+Se tivéssemos \(\frac{m_0-1}{n}\le x\), teríamos que
+\[\frac{m_0}{n}=\frac{m_0-1}{n}+\frac{1}{n}\le x+\frac{1}{n}< y\,,\]
+o que implicaria que \(m_0\not\in A\). Assim, devemos ter \(x< \frac{m_0-1}{n}< y\).
+Se \(x< y\le 0\), então \(0\le -y< -x\) e, pelo que acabamos de provar, existe \(r\in\mathbb{Q}\) tal que \(-y< r< -x\). Portanto, \(x< -r< y\).
+Finalmente, o teorema é trivial no caso \(x< 0< y\), pois \(0\in\mathbb{Q}\). \(\blacksquare\)
+</p>
+
+<p>
+Sejam \(a,b\in\mathbb{R}\) com \(a\le b\). Definem-se os seguintes <b>intervalos finitos</b>:
+</p>
+
+<ol class="org-ol">
+<li><b>Intervalo aberto</b>: \((a,b)=\{x\in\mathbb{R}:a< x< b\}\)</li>
+<li><b>Intervalo fechado</b>: \([a,b]=\{x\in\mathbb{R}:a\le x\le b\}\)</li>
+<li><b>Intervalos semiabertos</b>: \((a,b]=\{x\in\mathbb{R}:a< x\le b\}\) e \([a,b)=\{x\in\mathbb{R}:a\le x< b\}\)</li>
+</ol>
+
+<p>
+O intervalo fechado \([a,a]=\{a\}\) é chamado de <b>intervalo degenerado</b>. Definem-se também os seguintes <b>intervalos infinitos</b>:
+</p>
+
+<ol class="org-ol">
+<li>\((a,\infty)=\{x\in\mathbb{R}:x>a\}\)</li>
+<li>\([a,\infty)=\{x\in\mathbb{R}:x\ge a\}\)</li>
+<li>\((-\infty,a)=\{x\in\mathbb{R}:x< a\}\)</li>
+<li>\((-\infty,a]=\{x\in\mathbb{R}:x\le a\}\)</li>
+<li>\((-\infty,\infty)=\mathbb{R}\)</li>
+</ol>
+
+<p>
+<b>Teorema dos intervalos encaixados.</b> Para cada inteiro \(n>0\) seja \(I_n\) um intervalo fechado.
+Se \(I_{n+1}\subset I_n\) para todo \(n\), então existe \(c\in\mathbb{R}\) tal que \(c\in I_n\) para todo \(n\).
+</p>
+
+<p>
+<b>Demonstração.</b> Para cada inteiro \(n>0\), seja \(I_n=[a_n,b_n]\). Temos que
+\[a_1\le a_2\le \ldots\le a_n\le\ldots\le b_n\le \ldots\le b_2\le b_1\,.\]
+O conjunto \(A=\{a_1,a_2,\ldots\}\) é um conjunto não-vazio tal que qualquer \(b_n\), com \(n>0\) inteiro, é uma cota superior de \(A\).
+Logo, existe \(c=\sup A\), o qual satisfaz a desigualdade \(a_n\le c\le b_n\) para todo inteiro \(n>0\). \(\blacksquare\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org82aeeb9" class="outline-2">
+<h2 id="org82aeeb9"><span class="section-number-2">4</span> Conjuntos enumeráveis e não-enumeráveis<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup></h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Seja \(\mathbb{Z}^+\) o conjunto dos inteiros positivos. Diz-se que um conjunto \(A\) é <b>enumerável</b> se existe uma função injetiva \(f:A\to \mathbb{Z}^+\).
+</p>
+
+<p>
+<b>Exemplo.</b> O conjunto \(A=\{a,b,c\}\) é enumerável, pois a função \(f:A\to\mathbb{Z}^+\) definida por \(f(a)=1\), \(f(b)=2\) e \(f(c)=3\) é injetiva. De fato, qualquer conjunto que tem um número finito de elementos é enumerável.
+</p>
+
+<p>
+<b>Exemplo.</b> O conjunto \(\mathbb{Z}\) dos números inteiros é um conjunto enumerável, pois a função \(f:\mathbb{Z}\to\mathbb{Z}^+\) definida por 
+\[f(n)=\begin{cases}
+2n+1&\text{se }n\ge 0\\
+-2n&\text{se }n<0\\
+\end{cases}\]
+é injetiva (de fato é uma bijeção).
+</p>
+
+<p>
+<b>Exemplo.</b> O conjunto \(\mathbb{Z^+}\times\mathbb{Z}^+\) é enumerável, pois a função
+\(f:\mathbb{Z}^+\times\mathbb{Z}^+\to\mathbb{Z}^+\) definida por
+\[f(m,n)=2^m3^n\]
+é injetiva em virtude da unicidade da decomposição de inteiros positivos em fatores primos.
+</p>
+
+<p>
+<b>Teorema.</b> Um conjunto \(A\) é enumerável se, e somente se, existe uma função sobrejetiva \(f:\mathbb{Z}^+\to A\).
+</p>
+
+<p>
+<b>Demonstração.</b> Suponhamos que \(g:A\to\mathbb{Z}^+\) seja uma função injetiva.
+Essa afirmação é equivalente a dizer que \(g\) tem uma inversa à esquerda \(f:\mathbb{Z}^+\to A\). A função \(f\) é sobrejetiva, pois \(g\) é uma inversa à direita dela. \(\blacksquare\)
+</p>
+
+<p>
+<b>Teorema.</b> Se \(A\) e \(B\) são conjuntos enumeráveis, então \(A\times B\) também é um conjunto enumerável.
+</p>
+
+<p>
+<b>Demonstração.</b> Existem funções injetivas \(f:A\to\mathbb{Z}^+\) e \(g:B\to\mathbb{Z}^+\).
+Podemos verificar imediatamente que a função \(\phi:A\times B\to\mathbb{Z}^+\times\mathbb{Z}^+\) definida por \(\phi(x,y)=(f(x),g(y))\) é injetiva.
+Como \(\mathbb{Z}^+\times\mathbb{Z}^+\) é enumerável, existe uma função injetiva \(h:\mathbb{Z}^+\times\mathbb{Z}^+\to\mathbb{Z}\).
+Logo, a função composta \(h\circ \phi:A\times B\to\mathbb{Z}^+\) é injetiva e, por conseguinte, \(A\times B\) é enumerável. \(\blacksquare\)
+</p>
+
+
+<p>
+<b>Exemplo (\(\mathbb{Q}\) é enumerável).</b> O conjunto \(\mathbb{Q}\) dos números racionais é enumerável, pois a função \(f:\mathbb{Z}\times\mathbb{Z}^+\to\mathbb{Q}\) definida por \(f(m,n)=m/n\) é sobrejetiva e o conjunto \(\mathbb{Z}\times\mathbb{Z}^+\) é enumerável.
+</p>
+
+<p>
+Seja \(L\) um conjunto tal que, para cada \(\alpha\in L\), \(A_\alpha\) seja um conjunto. Isso define uma <b>família de conjuntos</b> \((A_\alpha)_{\alpha\in L}\).
+Define-se a união dessa família por
+\[\bigcup_{\alpha\in L}A_\alpha=\{x:x\in A_{\alpha}\text{ para algum }\alpha\in L\}\,.\]
+Define-se a interseção da família por
+\[\bigcap_{\alpha\in L}A_\alpha=\{x:x\in A_{\alpha}\text{ para todo }\alpha\in L\}\,.\]
+</p>
+
+<p>
+<b>Teorema.</b> Seja \((A_\alpha)_{\alpha\in L}\) uma família de conjuntos. Se \(L\) é enumerável e, para cada \(\alpha\in L\), \(A_\alpha\) é enumerável, então a união \(\bigcup_{\alpha\in L}A_\alpha\) é um conjunto enumerável.
+</p>
+
+<p>
+<b>Demonstração.</b> Para cada \(\alpha\in L\) existe uma função sobrejetiva \(f_\alpha:\mathbb{Z}^+\to A_\alpha\).
+Podemos verificar facilmente que a função \(\phi:L\times L\to \bigcup_{\alpha\in L}A_\alpha\) definida por
+\[\phi(\alpha,x)=f_\alpha(x)\]
+é sobrejetiva. Como \(L\times L\) é enumerável, segue que \(\bigcup_{\alpha\in L}A_\alpha\) também é enumerável.
+</p>
+
+<p>
+<b>Teorema (\(\mathbb{R}\) é não-enumerável).</b> O conjunto \(\mathbb{R}\) dos números reais é não-enumerável. 
+</p>
+
+<p>
+<b>Demonstração.</b> Seja \(E=\{x_1,x_2,\ldots\}\subset\mathbb{R}\) um conjunto enumerável arbitrário. Vamos mostrar que \(\mathbb{R}\ne E\).
+Para isso consideremos inicialmente um intervalo fechado não-dgenerado \(I_1\) tal que \(x_1\not\in I_1\).
+Supondo definido o intervalo fechado não-degenerado \(I_n\subset I_1\) tal que \(x_n\not\in I_n\), temos as seguintes opções
+</p>
+
+<ol class="org-ol">
+<li>\(x_{n+1}\not\in I_n\)</li>
+<li>\(x_{n+1}\in I_n\)</li>
+</ol>
+
+<p>
+No primeiro caso, definimos \(I_{n+1}=I_n\) e assim \(I_{n+1}\subset I_n\).
+No segundo caso, \(x_{n+1}\) deve ser diferente de pelo menos um dos extremos do intervalo \(I_n=[a_n,b_n]\).
+Logo, se, por exemplo, \(x_{n+1}\ne a_n\), definimos \(I_{n+1}=[a_n,(a_n+x_n)/2]\) e assim \(I_{n+1}\subset I_n\).
+Esse procedimento nos permite definir, para cada \(n\in\mathbb{Z}^+\), um intervalo fechado não-degenerado \(I_n\) tal que \(x_n\not\in I_n\) e \(I_{n+1}\subset I_n\) para todo \(n\in\mathbb{Z}^+\).
+Pelo teorema dos intervalos encaixados, existe \(c\in\mathbb{R}\) tal que \(c\in I_n\) para todo \(n\in\mathbb{Z}^+\). Logo, \(c\ne x_n\) para todo \(n\in\mathbb{Z}^+\) e, por conseguinte, \(c\not\in E\). \(\blacksquare\)
+</p>
+
+<p>
+<b>Corolário.</b> O conjunto \(\mathbb{R}-\mathbb{Q}\) dos números irracionais é não-enumerável.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Notas de Rodap&eacute;: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+A expressão de \(g(x)\) pode ser obtida resolvendo a equação \(y=x+3\) para \(x\) e depois permutando as variáveis \(x\) e \(y\).
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+Em uma primeira leitura podem ser omitidas as demonstrações dos teoremas desta seção.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <div class="footpara"><p class="footpara">
+Esta seção pode ser omitida em uma primeira leitura. 
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Autor: Max Jauregui</p>
+<p class="date">Criado em: 2022-11-15 Tue 20:44</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

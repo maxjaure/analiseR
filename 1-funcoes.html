@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt_BR" xml:lang="pt_BR">
+<head>
+<!-- 2022-11-15 Tue 20:44 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Funções reais de uma variável real</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Max Jauregui" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Funções reais de uma variável real</h1>
+<div id="table-of-contents">
+<h2>&Iacute;ndice</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org11690d0">1. Definições básicas</a></li>
+<li><a href="#orgb4936d5">2. Funções lineares</a></li>
+<li><a href="#org93d8621">3. Funções polinomiais</a></li>
+<li><a href="#orgcf08e7f">4. Funções racionais</a></li>
+<li><a href="#org762feb3">5. Funções algébricas</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org11690d0" class="outline-2">
+<h2 id="org11690d0"><span class="section-number-2">1</span> Definições básicas</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Uma função \(f:A\to B\) é dita uma <b>função real</b> se \(B\subset\mathbb{R}\).
+Se além disso \(A\subset\mathbb{R}\), diz-se que \(f\) é uma <b>função real de uma variável real</b>.
+De aqui em diante qualquer função será uma função real de uma variável real a menos que se indique explícitamente outra coisa.
+Na prática, é comum definir uma função \(f\) simplesmente por uma equação da forma
+\[f(x)=\text{expressão envolvendo a variável }x\,.\]
+Nesse caso, assume-se que o domínio de \(f\) é o conjunto de todos os \(x\in\mathbb{R}\) para os quais a expressão do lado direito retorna um número real.
+O contradomínio de \(f\) pode ser em princípio qualquer conjunto que contenha a imagem de \(f\); por exemplo, o próprio conjunto \(\mathbb{R}\).
+</p>
+
+<p>
+<b>Exemplo.</b> A equação
+\[f(x)=\frac{3}{x-2}\]
+define uma função \(f\) cujo domínio é o conjunto \(A\) formado por todos os \(x\in\mathbb{R}\) tais que \(x-2\ne 0\). Assim, \(A=\mathbb{R}-\{2\}\).
+</p>
+
+<p>
+Uma função \(f:A\to \mathbb{R}\) pode ser representada graficamente localizando os pares ordenados \((x,f(x))\), com \(x\in A\), no plano cartesiano.
+Tipicamente, esse processo gera uma curva, a qual é chamada de <b>gráfico</b> de \(f\).
+Como para cada \(x\in A\), existe um único par ordenado \((x,f(x))\), o gráfico de \(f\) pode ser intersetado por qualquer reta vertical em no máximo um ponto.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb4936d5" class="outline-2">
+<h2 id="orgb4936d5"><span class="section-number-2">2</span> Funções lineares</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Diz-se que uma função \(f\) é uma <b>função linear</b> se existem constantes \(a,b\in\mathbb{R}\) tais que \(f(x)=ax+b\).
+O domínio de qualquer função linear é \(\mathbb{R}\). Se \(a\ne 0\), a imagem da função linear \(f(x)=ax+b\) é \(\mathbb{R}\); caso contrário, a imagem de \(f\) é \(\{b\}\).
+Nesse último caso, diz-se que \(f\) é uma <b>função constante</b>.
+</p>
+
+<p>
+<b>Exemplo.</b> A figura <a href="#orge550497">1</a> mostra os gráficos das funções lineares \(f(x)=2x+1\), \(g(x)=-x+2\) e \(h(x)=3\). Notamos que em todos os casos, o gráfico é uma reta.
+</p>
+
+<div id="orge550497" class="figure">
+<p><img src="./1-fig1.png" alt="1-fig1.png" />
+</p>
+<p><span class="figure-number">Figura 1: </span>Gráficos das funções lineares \(f(x)=2x+1\), \(g(x)=-x+2\) e \(h(x)=3\).</p>
+</div>
+
+<p>
+Se uma reta passa por dois pontos \((x_1,y_1)\) e \((x_2,y_2)\), como mostrado na figura <a href="#orgd03b5e8">2</a>, define-se a inclinação dessa reta por
+\[m=\frac{\Delta y}{\Delta x}=\frac{y_2-y_1}{x_2-x_1}\,.\]
+Pode-se verificar que a inclinação da reta não depende da escolha dos pontos \((x_1,y_1)\) e \((x_2,y_2)\), desde que eles pertençam à reta.
+Como o gráfico de uma função linear \(f(x)=ax+b\) é uma reta que passa pelos pontos \((0,b)\) e \((1,a+b)\), a inclinação dessa reta será
+\[m=\frac{a+b-b}{1-0}=a\,.\]
+Portanto, o gráfico da função linear \(f(x)=ax+b\) é uma reta com inclinação \(a\) que passa pelo ponto \((0,b)\), ou seja, a reta corta o eixo \(y\) no valor \(y=b\).
+</p>
+
+<div id="orgd03b5e8" class="figure">
+<p><img src="./1-fig2.png" alt="1-fig2.png" />
+</p>
+<p><span class="figure-number">Figura 2: </span>Inclinação de uma reta.</p>
+</div>
+
+<p>
+<b>Exemplo.</b> Vamos encontrar a função linear cujo gráfico é uma reta que passa pelos pontos \((1,3)\) e \((-2,1)\).
+Primeiro encontramos que a inclinação da reta é
+\[m=\frac{3-1}{1-(-2)}=\frac{2}{3}\,.\]
+Logo, a função linear que procuramos deve ter a forma \(f(x)=\frac{2}{3}x+b\).
+Para determinar \(b\) usamos, por exemplo, o fato de que a reta passa pelo ponto \((1,3)\), ou seja, \(f(1)=3\).
+Com isso, temos que
+\[3=\frac{2}{3}(1)+b\quad\Rightarrow\quad b=\frac{7}{3}\,.\]
+Portanto, a função linear desejada é \(f(x)=\frac{2}{3}x+\frac{7}{3}\).
+</p>
+
+<p>
+Diz-se que uma função \(f:A\to\mathbb{R}\) é <b>crescente</b> em um conjunto \(E\subset A\) se, para quaisquer \(x_1,x_2\in E\) com \(x_1< x_2\), tem-se que \(f(x_1)< f(x_2)\).
+Analogamente, diz-se que \(f\) é <b>decrescente</b> em um conjunto \(E\subset A\) se, para quaisquer \(x_1,x_2\in E\) com \(x_1< x_2\), tem-se que \(f(x_1)> f(x_2)\).
+</p>
+
+<p>
+<b>Exemplo.</b> Uma função linear \(f(x)=ax+b\) é crescente em \(\mathbb{R}\) se \(a>0\), e é decrescente se \(a< 0\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org93d8621" class="outline-2">
+<h2 id="org93d8621"><span class="section-number-2">3</span> Funções polinomiais</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Diz-se que uma função \(f\) é uma <b>função polinomial</b> se existem constantes \(a_0,a_1,\ldots,a_n\in\mathbb{R}\) tais que
+\[f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\,.\]
+Os números \(a_0,a_1,\ldots,a_n\) são chamados de <b>coeficientes</b>; porém, especialmente o coeficiente \(a_0\) é chamado de <b>termo independente</b>.
+Se \(a_n\ne 0\), diz-se que \(f\) é uma função polinomial de <b>grau</b> \(n\).
+O domínio de qualquer função polinomial é \(\mathbb{R}\).
+Se o grau de uma função polinomial \(f\) é ímpar, a sua imagem também é \(\mathbb{R}\). 
+Por outro lado, se o grau de \(f\) é par, só uma das seguintes afirmações é verdadeira:
+</p>
+
+<ol class="org-ol">
+<li>existe \(x_0\in\mathbb{R}\) tal que \(f(x_0)\ge f(x)\) para todo \(x\in\mathbb{R}\), ou seja, \(f\) atinge seu <b>máximo absoluto</b> em um ponto \(x_0\).</li>
+<li>existe \(x_0\in\mathbb{R}\) tal que \(f(x_0)\le f(x)\) para todo \(x\in\mathbb{R}\), ou seja, \(f\) atinge seu <b>mínimo absoluto</b> em um ponto \(x_0\).</li>
+</ol>
+
+<p>
+No primeiro caso a imagem de \(f\) é o intervalo \((-\infty,f(x_0)]\). No segundo caso, a imagem de \(f\) é o intervalo \([f(x_0),\infty)\).
+</p>
+
+<p>
+<b>Exemplo.</b> A figura <a href="#orga3e7970">3</a> mostra o gráfico da função \(f_n(x)=x^n\) para alguns valores inteiros \(n>0\).
+Dessa figura observamos o seguinte:
+</p>
+
+<ol class="org-ol">
+<li>\(f_n\) é crescente em \(\mathbb{R}\) se \(n\) é ímpar; enquanto que \(f_n\) é decrescente em \((-\infty,0]\) e crescente em \([0,\infty)\) se \(n\) é par.</li>
+<li>O gráfico de \(f_n\) é simétrico em relação à origem se \(n\) é ímpar. Por outro lado, se \(n\) é par, o gráfico de \(f_n\) é simétrico em relação ao eixo \(y\).</li>
+<li>Se \(x>1\), então \(f_{n+1}(x)>f_n(x)\), ou seja, \(x^{n+1}>x_n\).</li>
+<li>Se \(0<x<1\), então \(f_{n+1}(x)< f_n(x)\), ou seja, \(x^{n+1}< x_n\).</li>
+</ol>
+
+
+<div id="orga3e7970" class="figure">
+<p><img src="./1-fig3.png" alt="1-fig3.png" />
+</p>
+<p><span class="figure-number">Figura 3: </span>Gráficos das funções \(f_n(x)=x^n\) para alguns valores de \(n\).</p>
+</div>
+
+<p>
+<b>Exemplo.</b> Uma função polinomial de grau \(2\) é chamada de uma <b>função quadrática</b>.
+Vamos encontrar a imagem da função quadrática
+\[f(x)=2x^2-3x+2\,.\]
+Para isso é conveniente escrevermos a expressão de \(f\) na forma
+\[f(x)=2\left[x^2-\frac{3}{2}x\right]+2\,.\]
+Agora vamos completar o quadrado dentro da expressão em colchetes:
+</p>
+\begin{equation*}
+  \begin{split}
+    f(x)&=2\left[x^2-\frac{3}{2}x+\left(\frac{3}{4}\right)^2-\left(\frac{3}{4}\right)^2\right]+2\\
+        &=2\left[\left(x-\frac{3}{4}\right)^2-\left(\frac{3}{4}\right)^2\right]+2\\
+    &=2\left(x-\frac{3}{4}\right)^2+\frac{7}{8}\,.
+  \end{split}
+\end{equation*}
+<p>
+Como \((x-\frac{3}{4})^2\ge 0\) para todo \(x\in\mathbb{R}\), o mínimo absoluto de \(f\) será atingido quando \(x=3/4\).
+Além disso, podemos verificar imediatamente que \(f(3/4)=7/8\).
+Portanto, a imagem de \(f\) é o intervalo \([7/8,\infty)\). 
+A figura <a href="#orge965b58">4</a> mostra o gráfico de \(f\), que é uma curva chamada de <b>parábola</b>.
+</p>
+
+
+<div id="orge965b58" class="figure">
+<p><img src="./1-fig4.png" alt="1-fig4.png" />
+</p>
+<p><span class="figure-number">Figura 4: </span>Gráfico da função quadrática \(f(x)=2x^2-3x+2\).</p>
+</div>
+
+<p>
+Seja \(f\) uma função polinomial.
+Diz-se que um ponto \(a\in\mathbb{R}\) é uma <b>raiz</b> de \(f\) se \(f(a)=0\). 
+Geometricamente, as raízes de uma função polinomial são os valores de \(x\) nos quais o gráfico da função polinomial interseta com o eixo \(x\).
+O seguinte resultado, que não provaremos aqui, é uma consequência do chamado <b>teorema fundamental da álgebra</b>:
+</p>
+
+<p>
+<b>Teorema.</b> Toda função polinomial de grau \(n\) tem no máximo \(n\) raízes reais.
+</p>
+
+<p>
+As seguintes afirmações também podem ser úteis para determinar as raízes de uma função polinomial:
+</p>
+
+<p>
+<b>Teorema.</b> Toda função polinomial de grau ímpar tem pelo menos uma raiz real.
+</p>
+
+<p>
+<b>Teorema.</b> Seja a função polinomial
+\[f(x)=a_nx^n+\cdots+a_1x+a_0\,,\]
+em que \(a_0,a_1,\ldots,a_n\in\mathbb{Z}\), \(a_0\ne 0\) e \(a_n\ne 0\).
+O conjunto das possíveis raízes racionais de \(f\) é
+\[\left\{\frac{p}{q}:p\text{ é um divisor de }a_0\text{ e }q\text{ é um divisor de }a_n\right\}\,.\]
+</p>
+
+<p>
+<b>Demonstração.</b> Sejam \(p\) e \(q\ne 0\) inteiros tais que \(p/q\) seja uma raiz de \(f\). Logo, \(f(p/q)=0\), ou seja,
+</p>
+\begin{equation}
+  \label{eq1}
+  a_n\frac{p^n}{q^n}+a_{n-1}\frac{p^{n-1}}{q^{n-1}}+\cdots+a_1\frac{p}{q}+a_0=0
+\end{equation}
+<p>
+Multiplicando essa equação por \(q^{n-1}\), temos que
+\[\frac{a_np^n}{q}+a_{n-1}p^{n-1}+\cdots+a_1pq^{n-2}+a_0q^{n-1}=0\,.\]
+Como \(a_{n-1}p^{n-1},\ldots,a_1p^{n-2}\) e \(a_0q^{n-1}\) são inteiros, o número \(\frac{a_np^n}{q}\) também deve ser inteiro para que a equação seja verdadeira.
+Logo, \(q\) deve ser um divisor de \(a_np^n\).
+Segue daqui que \(q=1\) ou \(q\) é um divisor de \(a_n\), pois, se \(q\ne 1\), podemos assumir que \(p\) e \(q\) não têm fatores em comum.
+Assim, em ambos os casos \(q\) é um divisor de \(a_n\). Se agora multiplicamos a Eq. (\ref{eq1}) por \(\frac{q^n}{p}\) (devemos ter \(p\ne 0\), senão a Eq. (\ref{eq1}) seria falsa), temos que
+\[a_np^{n-1}+a_{n-1}p^{n-2}q+\cdots+a_1q^{n-1}+a_0\frac{q^n}{p}=0\,.\]
+Daqui podemos concluir que \(p\) deve ser um divisor de \(a_0\). \(\blacksquare\)
+</p>
+
+<p>
+<b>Exemplo.</b> Vamos encontrar as raízes da função
+\[f(x)=x^3-5x^2+2x+8\,.\]
+Primeiramente observamos que o conjunto das possíveis raízes racionais de \(f\) é \(\{\pm 1,\pm 2,\pm 4,\pm 8\}\).
+Usando os elementos desse conjunto, podemos verificar que \(-1\) é uma raiz de \(f\).
+Isso quer dizer que a divisão \(\frac{f(x)}{x-(-1)}\) é exata. De fato, usando o método de Ruffini, temos que
+\[\begin{matrix}
+&|&1&-5&2&8\\
+-1&|&&-1&6&-8\\
+\hline\\
+&|&1&-6&8&0
+\end{matrix}\]
+Logo,
+\[\frac{f(x)}{x+1}=x^2-6x+8\quad\Rightarrow\quad f(x)=(x+1)(x^2-6x+8)\,.\]
+Para obter as raízes restantes, caso existam, devemos resolver a equação \(f(x)=0\) para a variável \(x\).
+Assim, temos que
+\[(x+1)(x^2-6x+8)=0\,.\]
+Segue daqui que \(x+1=0\) ou \(x^2-6x+8=0\). Da primeira igualdade obtemos \(x=-1\) (que é a raiz de \(f\) que já foi encontrada) e da segunda igualdade obtemos que
+\[x=\frac{-(-6)\pm\sqrt{(-6)^2-4(1)(8)}}{2(1)}\,,\]
+de onde segue que \(x=2\) ou \(x=4\). Portanto, as raízes de \(f\) são \(-1,2\) e \(4\).
+Consequentemente, o gráfico de \(f\) (ver figura <a href="#org541f8f0">5</a>) interseta o eixo \(x\) nos valores \(x=-1\), \(x=2\) e \(x=4\).
+</p>
+
+
+<div id="org541f8f0" class="figure">
+<p><img src="./1-fig5.png" alt="1-fig5.png" />
+</p>
+<p><span class="figure-number">Figura 5: </span>Gráfico da função \(f(x)=x^3-5x^2+2x+8\).</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcf08e7f" class="outline-2">
+<h2 id="orgcf08e7f"><span class="section-number-2">4</span> Funções racionais</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Diz-se que uma função \(f\) é uma <b>função racional</b> se existem funções polinomiais \(p\) e \(q\) tais que
+\[f(x)=\frac{p(x)}{q(x)}\,.\]
+O domínio de \(f\) é o conjunto \(\{x\in\mathbb{R}:q(x)\ne 0\}\).
+</p>
+
+<p>
+<b>Exercício.</b> Determine o domínio da função racional
+\[f(x)=\frac{x^5-2x^3+4x^2-1}{3x^2-4x-4}\,.\]
+</p>
+
+<p>
+<b>Exemplo.</b> A figura <a href="#org187b219">6</a> mostra o gráfico das funções \(f(x)=1/x\) e \(g(x)=1/x^2\).
+Notamos que \(f(x)\) assume valores positivos grandes se consideramos valores de \(x\) positivos próximos de \(0\).
+Além disso, \(f(x)\) assume valores negativos grandes se consideramos valores de \(x\) negativos próximos de \(0\).
+Por outro lado, \(g(x)\) assume valores grandes positivos se consideramos valores de \(x\) próximos de \(0\) de qualquer sinal.
+</p>
+
+
+<div id="org187b219" class="figure">
+<p><img src="./1-fig6.png" alt="1-fig6.png" />
+</p>
+<p><span class="figure-number">Figura 6: </span>Gráficos das funções \(f(x)=1/x\) e \(g(x)=1/x^2\).</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org762feb3" class="outline-2">
+<h2 id="org762feb3"><span class="section-number-2">5</span> Funções algébricas</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Dado um inteiro \(n>0\), consideremos a função \(f_n:[0,\infty)\to[0,\infty)\) definida por \(f_n(x)=x^n\).
+Sabemos que essa função é sobrejetiva e é crescente no seu domínio (ver figura <a href="#orga3e7970">3</a>).
+Logo, ela também é injetiva e, por conseguinte, é uma bijeção.
+Assim, \(f_n\) tem uma inversa \(f_n^{-1}:[0,\infty)\to[0,\infty)\) definida por
+\[f_n^{-1}(x)=y\quad\Leftrightarrow\quad y^n=x\,.\]
+A função \(f_n^{-1}\) é chamada de função <b>raiz \(n\)-ésima</b> e escreve-se
+\[f_n^{-1}(x)=\sqrt[n]{x}\quad\text{ou}\quad f_n^{-1}(x)=x^{1/n}\,.\]
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Autor: Max Jauregui</p>
+<p class="date">Criado em: 2022-11-15 Tue 20:44</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
