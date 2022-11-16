@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt_BR" xml:lang="pt_BR">
 <head>
-<!-- 2022-11-15 Tue 20:44 -->
+<!-- 2022-11-16 Wed 00:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Números reais</title>
@@ -269,25 +269,28 @@ for the JavaScript code in this tag.
 <h2>&Iacute;ndice</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb9827d7">1. Linguagem de conjuntos</a></li>
-<li><a href="#orge045839">2. Funções</a></li>
-<li><a href="#orge23168d">3. O corpo dos números reais</a></li>
-<li><a href="#org82aeeb9">4. Conjuntos enumeráveis e não-enumeráveis</a></li>
+<li><a href="#org882849b">1. Linguagem de conjuntos</a></li>
+<li><a href="#orga748e35">2. Funções</a></li>
+<li><a href="#org7fbe906">3. O corpo dos números reais</a></li>
+<li><a href="#org15fc8ad">4. Conjuntos enumeráveis e não-enumeráveis</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgb9827d7" class="outline-2">
-<h2 id="orgb9827d7"><span class="section-number-2">1</span> Linguagem de conjuntos</h2>
+<div id="outline-container-org882849b" class="outline-2">
+<h2 id="org882849b"><span class="section-number-2">1</span> Linguagem de conjuntos</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Um <b>conjunto</b> \(A\) é uma coleção de objetos quaisquer, chamados de <b>elementos</b> de \(A\).
 Se \(x\) é um elemento de \(A\), diz-se que \(x\) <b>pertence</b> a \(A\) e escreve-se \(x\in A\); caso contrário, escreve-se \(x\not\in A\).
 </p>
 
+<div class="ex">
 <p>
-<b>Exemplo.</b> Se \(A=\{1,2,3\}\), temos que \(1\in A\) e \(4\not\in A\).
+Se \(A=\{1,2,3\}\), temos que \(1\in A\) e \(4\not\in A\).
 </p>
+
+</div>
 
 <p>
 O <b>conjunto vazio</b>, denotado por \(\emptyset\), é o conjunto que não tem elementos.
@@ -297,9 +300,12 @@ O <b>conjunto vazio</b>, denotado por \(\emptyset\), é o conjunto que não tem 
 Sejam \(A\) e \(B\) conjuntos. Diz-se que \(A\) está <b>contido</b> em \(B\) ou que \(A\) é um <b>subconjunto</b> de \(B\) se \(x\in A\) implica que \(x\in B\).
 </p>
 
+<div class="ex">
 <p>
-<b>Exemplo.</b> Sejam \(A=\{1,2,3\}\), \(B=\{1,2,3,4\}\) e \(C=\{2,3,4,5\}\). Temos que \(A\subset B\); porém, \(A\not\subset C\).
+Sejam \(A=\{1,2,3\}\), \(B=\{1,2,3,4\}\) e \(C=\{2,3,4,5\}\). Temos que \(A\subset B\); porém, \(A\not\subset C\).
 </p>
+
+</div>
 
 <p>
 Sejam \(A\) e \(B\) conjuntos.
@@ -317,35 +323,44 @@ Sejam \(A\) e \(B\) conjuntos.
 Dois pares ordenados \((x_1,y_1)\) e \((x_2,y_2)\) são iguais se e somente se \(x_1=x_1\) e \(y_1=y_2\).</li>
 </ol>
 
+<div class="ex">
 <p>
-<b>Exemplo.</b> Sejam \(A=\{1,2,3,4\}\) e \(B=\{1,3,5\}\). Temos que \(A\cup B=\{1,2,3,4,5\}\), \(A\cap B=\{1,3\}\), \(A-B=\{2,4\}\), \(B-A=\{5\}\) e
+Sejam \(A=\{1,2,3,4\}\) e \(B=\{1,3,5\}\). Temos que \(A\cup B=\{1,2,3,4,5\}\), \(A\cap B=\{1,3\}\), \(A-B=\{2,4\}\), \(B-A=\{5\}\) e
 \[A\times B=\{(1,1),(1,3),(1,5),(2,1),(2,3),(2,5),(3,1),(3,3),(3,5),(4,1),(4,3),(4,5)\}\,.\]
 </p>
+
+</div>
 </div>
 </div>
 
-<div id="outline-container-orge045839" class="outline-2">
-<h2 id="orge045839"><span class="section-number-2">2</span> Funções</h2>
+<div id="outline-container-orga748e35" class="outline-2">
+<h2 id="orga748e35"><span class="section-number-2">2</span> Funções</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Sejam \(A\) e \(B\) conjuntos. Uma <b>função</b> \(f\) de \(A\) em \(B\) pode ser definida como um subconjunto de \(A\times B\) tal que para cada \(x\in A\) existe um único par ordenado \((x,y)\in f\).
 </p>
 
+<div class="ex">
 <p>
-<b>Exemplo.</b> Se \(A=\{1,2,3\}\) e \(B=\{10,20\}\), o conjunto
+Se \(A=\{1,2,3\}\) e \(B=\{10,20\}\), o conjunto
 \[f=\{(1,10),(2,10),(3,20)\}\]
 é uma função de \(A\) em \(B\). No entanto, os conjuntos
 \[g=\{(1,10),(1,20),(2,20),(3,20)\}\quad\text{e}\quad h=\{(1,20),(3,20)\}\]
 não são funções de \(A\) em \(B\).
 </p>
 
+</div>
+
 <p>
 Seja \(f\) uma função de \(A\) em \(B\). Se \((x,y)\in f\), diz-se que \(y\) é o <b>valor</b> da função \(f\) no ponto \(x\) e escreve-se \(y=f(x)\).
 </p>
 
+<div class="ex">
 <p>
-<b>Exemplo.</b> Para a função \(f\) do exemplo anterior temos que \(f(1)=10\), \(f(2)=10\) e \(f(3)=20\).
+Para a função \(f\) do exemplo anterior temos que \(f(1)=10\), \(f(2)=10\) e \(f(3)=20\).
 </p>
+
+</div>
 
 <p>
 Uma função \(f\) de \(A\) em \(B\) é denotada simbolicamente por \(f:A\to B\).
@@ -353,13 +368,16 @@ O conjunto \(A\) é chamado de <b>domínio</b> de \(f\) e o conjunto \(B\) de <b
 Pode-se definir uma função \(f:A\to B\) fornecendo uma regra que permita encontrar o valor \(f(x)\in B\) para cada \(x\in A\).
 </p>
 
+<div class="ex">
 <p>
-<b>Exemplo.</b> Se \(A=\{1,2,3,4,5\}\) e \(B=\{1,3,5\}\), podemos definir uma função \(f:A\to B\) pondo, por exemplo,
+Se \(A=\{1,2,3,4,5\}\) e \(B=\{1,3,5\}\), podemos definir uma função \(f:A\to B\) pondo, por exemplo,
 \[f(x)=\begin{cases}
 1&\text{se }x\text{ é ímpar}\\
 3&\text{se }x\text{ é par.}\\
 \end{cases}\]
 </p>
+
+</div>
 
 <p>
 Dada uma função \(f:A\to B\), define-se a <b>imagem de um conjunto</b> \(E\subset A\) por \(f\) como o conjunto
@@ -368,24 +386,31 @@ O conjunto \(f(A)\) é chamado de <b>imagem da função</b> \(f\).
 </p>
 
 <p>
-<b>Exemplo.</b> A imagem da função \(f\) do exemplo anterior é o conjunto \(f(A)=\{1,3\}\).
-</p>
-
-<p>
 Diz-se que uma função \(f:A\to B\) é <b>injetiva</b> se para quaisquer \(x_1,x_2\in A\) com \(x_1\ne x_2\) tem-se que \(f(x_1)\ne f(x_2)\).
 </p>
 
+<div class="ex">
 <p>
-<b>Exemplo.</b> Sejam \(A=\{1,2,3\}\) e \(B=\{4,5,6,7\}\). A função \(f:A\to B\) definida por \(f(x)=x+3\) é injetiva.
+A imagem da função \(f\) do exemplo anterior é o conjunto \(f(A)=\{1,3\}\).
+</p>
+
+</div>
+
+<div class="ex">
+<p>
+Sejam \(A=\{1,2,3\}\) e \(B=\{4,5,6,7\}\). A função \(f:A\to B\) definida por \(f(x)=x+3\) é injetiva.
 No entanto, a função \(g:A\to B\) definida por \(g(x)=6\) não é injetiva.
 </p>
+
+</div>
 
 <p>
 Uma função \(f:A\to B\) é dita <b>sobrejetiva</b> se \(f(A)=B\).
 </p>
 
+<div class="ex">
 <p>
-<b>Exemplo.</b> Sejam \(A=\{1,2,3,4\}\) e \(B=\{4,5,6\}\). A função \(f:A\to B\) definida por
+Sejam \(A=\{1,2,3,4\}\) e \(B=\{4,5,6\}\). A função \(f:A\to B\) definida por
  \[f(x)=\begin{cases}
 x+3&\text{se }x\ne 4\\
 4&\text{se }x=4
@@ -398,27 +423,36 @@ x+3&\text{se }x\ne 4\\
 não é sobrejetiva.
 </p>
 
+</div>
+
 <p>
 Diz-se que uma função \(f:A\to B\) é <b>bijetiva</b> ou que é uma <b>bijeção</b> se ela é injetiva e sobrejetiva.
 </p>
 
+<div class="ex">
 <p>
-<b>Exemplo.</b> Sejam \(A=\{1,2,3\}\) e \(B=\{4,5,6\}\). A função \(f:A\to B\) definida por \(f(x)=x+3\) é uma bijeção.
+Sejam \(A=\{1,2,3\}\) e \(B=\{4,5,6\}\). A função \(f:A\to B\) definida por \(f(x)=x+3\) é uma bijeção.
 </p>
+
+</div>
 
 <p>
 Sejam \(f:A\to B\) e \(g:C\to D\) duas funções. Se \(f(A)\subset C\), define-se a <b>função composta</b> \(g\circ f:A\to D\) por \((g\circ f)(x)=g(f(x))\).
 </p>
 
+<div class="ex">
 <p>
-<b>Exemplo.</b> Dados os conjuntos \(A=\{1,2,3\}\), \(B=\{4,5,6\}\) e \(C=\{2,3,4\}\), consideremos as funções \(f:A\to B\) e \(g:B\to D\) definidas respectivamente por \(f(x)=x+3\) e \(g(x)=x-2\).
+Dados os conjuntos \(A=\{1,2,3\}\), \(B=\{4,5,6\}\) e \(C=\{2,3,4\}\), consideremos as funções \(f:A\to B\) e \(g:B\to D\) definidas respectivamente por \(f(x)=x+3\) e \(g(x)=x-2\).
 Notamos que \(f(A)=B\) e, por conseguinte, podemos definir a função composta \(g\circ f:A\to C\). De fato, vamos ter que
 \[(g\circ f)(x)=g(x+3)=(x+3)-2=x+1\]
 para todo \(x\in A\). Por outro lado, como \(g(B)=C\not\subset A\), a função composta \(f\circ g:B\to A\) não pode ser definida.
 </p>
 
+</div>
+
+<div class="thm">
 <p>
-<b>Teorema.</b> Sejam \(f:A\to B\) e \(g:B\to C\) funções. Tem-se o seguinte:
+Sejam \(f:A\to B\) e \(g:B\to C\) funções. Tem-se o seguinte:
 </p>
 
 <ol class="org-ol">
@@ -427,21 +461,29 @@ para todo \(x\in A\). Por outro lado, como \(g(B)=C\not\subset A\), a função c
 <li>Se \(f\) e \(g\) são bijeções, então \(g\circ f\) também é uma bijeção.</li>
 </ol>
 
+</div>
+
 <p>
 Seja \(f:A\to B\) uma função. Diz-se que uma função \(g:B\to A\) é uma <b>inversa à esquerda</b> de \(f\) se \(g(f(x))=x\) para todo \(x\in A\).
 Por outro lado, diz-se que uma função \(h:B\to A\) é uma <b>inversa à direita</b> de \(f\) se \(f(h(x))=x\) para todo \(x\in B\).
 </p>
 
+<div class="thm">
 <p>
-<b>Teorema.</b> Seja \(f:A\to B\) uma função. Se \(g:B\to A\) é uma inversa à esquerda de \(f\) e \(h:B\to A\) é uma inversa à direita de \(f\), então \(g=h=f^{-1}\).
+Seja \(f:A\to B\) uma função. Se \(g:B\to A\) é uma inversa à esquerda de \(f\) e \(h:B\to A\) é uma inversa à direita de \(f\), então \(g=h=f^{-1}\).
 Nesse caso, a função \(f^{-1}:B\to A\) é chamada de <b>inversa</b> de \(f\).
 </p>
 
+</div>
+
+<div class="proof">
 <p>
-<b>Demonstração.</b> Temos que \(g(f(x))=x\) para todo \(x\in A\) e \(f(h(y))=y\) para todo \(y\in B\). Como \(h(y)\in A\) para todo \(y\in B\), então
+Temos que \(g(f(x))=x\) para todo \(x\in A\) e \(f(h(y))=y\) para todo \(y\in B\). Como \(h(y)\in A\) para todo \(y\in B\), então
 \[g(y)=g(f(h(y)))=h(y)\]
-para todo \(y\in B\). \(\blacksquare\)
+para todo \(y\in B\).
 </p>
+
+</div>
 
 <p>
 <b>Teorema.</b> Uma função \(f:A\to B\) tem uma inversa à esquerda se, e somente se, é injetiva.
@@ -493,8 +535,8 @@ x+2&\text{se }x\ne 1\\
 </div>
 </div>
 
-<div id="outline-container-orge23168d" class="outline-2">
-<h2 id="orge23168d"><span class="section-number-2">3</span> O corpo dos números reais<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h2>
+<div id="outline-container-org7fbe906" class="outline-2">
+<h2 id="org7fbe906"><span class="section-number-2">3</span> O corpo dos números reais<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup></h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Um conjunto \(F\) é chamado de um <b>corpo</b> se nele estão definidas duas operações, chamadas de <b>adição</b> (\(+\)) e <b>multiplicação</b> (\(\cdot\)), que têm as seguintes propriedades:
@@ -661,8 +703,8 @@ Logo, existe \(c=\sup A\), o qual satisfaz a desigualdade \(a_n\le c\le b_n\) pa
 </div>
 </div>
 
-<div id="outline-container-org82aeeb9" class="outline-2">
-<h2 id="org82aeeb9"><span class="section-number-2">4</span> Conjuntos enumeráveis e não-enumeráveis<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup></h2>
+<div id="outline-container-org15fc8ad" class="outline-2">
+<h2 id="org15fc8ad"><span class="section-number-2">4</span> Conjuntos enumeráveis e não-enumeráveis<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup></h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Seja \(\mathbb{Z}^+\) o conjunto dos inteiros positivos. Diz-se que um conjunto \(A\) é <b>enumerável</b> se existe uma função injetiva \(f:A\to \mathbb{Z}^+\).
@@ -781,7 +823,7 @@ Esta seção pode ser omitida em uma primeira leitura.
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Autor: Max Jauregui</p>
-<p class="date">Criado em: 2022-11-15 Tue 20:44</p>
+<p class="date">Criado em: 2022-11-16 Wed 00:18</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
