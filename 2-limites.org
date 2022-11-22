@@ -234,7 +234,7 @@ pois para cada $n\in\Z^+$ tem-se que $\frac{1}{n}\in A$ e $\frac{1}{n}\to 0$.
 #+end_ex
 
 Sejam $X$ e $Y$ espaços métricos, $A\subset X$, $f:A\to Y$ uma função e $a\in X$ um ponto de acumulação de $A$.
-Diz-se que um ponto $L\in Y$ é o *limite* de $f(x)$ quando $x$ tende para $a$ se para qualquer sequência $(x_n)_{n\ge 1}$ de pontos de $A-\{a\}$ tal que $x_n\to a$, tem-se que $f(x_n)\to L$.
+Diz-se que um ponto $L\in Y$ é o *limite* de $f(x)$ quando $x$ tende para $a$ se, para qualquer sequência $(x_n)_{n\ge 1}$ de pontos de $A-\{a\}$ tal que $x_n\to a$, tem-se que $f(x_n)\to L$.
 Nesse caso, escreve-se
 $$\lim_{x\to a}f(x)=L\,.$$
 
@@ -273,6 +273,7 @@ Seja $(x_n)_{n\ge 1}$ uma sequência qualquer de números reais diferentes de $a
 
 O seguinte teorema é uma consequência direta do teorema [[thm1]]:
 
+#+name: thm2
 #+attr_latex: :options [Operações com limites]
 #+begin_thm
 Sejam $X$ um espaço métrico, $A\subset X$, $f,g:A\to\R$ funções reais e $a\in X$ um ponto de acumulação de $A$. Se $\ds\lim_{x\to a}f(x)=L$ e $\ds\lim_{x\to a}g(x)=M$, tem-se o seguinte:
@@ -301,8 +302,204 @@ $$\lim_{x\to a}\frac{p(x)}{q(x)}=\frac{p(a)}{q(a)}\,.$$
 
 #+begin_ex
 Vamos avaliar o limite
-$$E=\lim_{x\to 1}\frac{x^3-3x^2+5x-3}{2x^2+x-3}\,.$$
+$$E=\lim_{x\to 1}\frac{x^3-3x^2+2}{2x^2+x-3}\,.$$
 Notamos que $\ds \lim_{x\to 1}(2x^2+x-3)=0$. Logo, $E$ não será o quociente do limite do numerador e o limite do denominador.
-Por outro lado, notamos que $\ds\lim_{x\to 1}(x^3-3x^2+5x-3)=0$. Devido a isso, diz-se que $E$ tem a *forma indeterminada* $0/0$.
+Por outro lado, notamos que $\ds\lim_{x\to 1}(x^3-3x^2+2)=0$. Devido a isso, diz-se que $E$ tem a *forma indeterminada* $0/0$.
+Isso indica que as funções polinomiais $p(x)=x^3-3x^2+2$ e $q(x)=2x^2+x-3$ têm $x=1$ como uma raiz comum e, por conseguinte, são divisíveis por $(x-1)$.
+Usando o método de Ruffini, temos que
+$$\begin{matrix}
+&|&1&-3&0&2\\
+1&|&&1&-2&-2\\
+\hline
+&|&1&-2&-2&0
+\end{matrix}$$
+e
+$$\begin{matrix}
+&|&2&1&-3\\
+1&|&&2&3\\
+\hline
+&|&2&3&0
+\end{matrix}$$
+Logo, $p(x)=(x-1)(x^2-2x-2)$ e $q(x)=(x-1)(2x+3)$. Usando isso, temos que
+$$\frac{p(x)}{q(x)}=\frac{x^2-2x-2}{2x+3}$$
+para todo $x\ne 1$. Como $\ds\lim_{x\to 1}(2x+3)\ne 0$, segue que
+$$E=\lim_{x\to 1}\frac{p(x)}{q(x)}=\lim_{x\to 1}\frac{x^2-2x-2}{2x+3}=-\frac{3}{5}\,.$$
 #+end_ex
 
+* Limites no infinito e limites infinitos
+
+Seja $(x_n)_{n\ge 1}$ uma sequência de números reais. Escreve-se
+$$\lim_{n\to\infty}x_n=\infty\quad\text{ou}\quad x_n\to\infty$$
+se para todo $A>0$ existe $N>0$ tal que $n>N$ implica que $x_n>A$.
+Além disso, escreve-se $\ds\lim_{n\to\infty}x_n=-\infty$ ou $x_n\to-\infty$ se $-x_n\to\infty$.
+Deve-se ressaltar que se $x_n\to\pm\infty$, a sequência $(x_n)_{n\ge 1}$ é divergente, pois não é limitada.
+
+#+begin_ex
+Se $x_n=n$ para todo $n\in\Z^+$, temos que $x_n\to\infty$. No entanto, se $x_n=(-1)^nn$ para todo $n\in\Z^+$, a sequência $(x_n)_{n\ge 1}$ é divergente, mas não temos $x_n\to\infty$ nem $x_n\to-\infty$.
+#+end_ex
+
+#+name: thm3
+#+begin_thm
+Sejam $(x_n)_{n\ge 1}$ e $(y_n)_{n\ge 1}$ sequências de números reais. Tem-se o seguinte:
+1. se $x_n\to \infty$ e existe $c\in\R$ tal que $y_n>c$ para todo $n\in\Z^+$, então $(x_n+y_n)\to \infty$;
+2. se $x_n\to \infty$ e $y_n>c>0$ para todo $n\in\Z^+$, então $x_ny_n\to \infty$;
+3. se $x_n\to \infty$ e $y_n<c<0$ para todo $n\in\Z^+$, então $x_ny_n\to -\infty$;
+4. se $x_n\to\infty$, então $\frac{1}{x_n}\to 0$.
+Valem resultados análogos no caso em que $x_n\to -\infty$.
+#+end_thm
+
+#+begin_proof
+$\text{ }$
+
+1. Se $x_n\to\infty$, então para qualquer $A>0$ existe $N>0$ tal que $n>N$ implica que $x_n>A-c$. Logo, se $y_n>c$ para todo $n\in\Z^+$, temos que $x_n+y_n>A$ para todo $n>N$. Portanto, $(x_n+y_n)\to\infty$.
+2. Se $x_n\to\infty$, então para qualquer $A>0$ existe $N>0$ tal que $n>N$ implica que $x_n>A/c$. Logo, se $y_n>c>0$, então $x_ny_n>A$ para todo $n>N$. Portanto, $x_ny_n\to\infty$.
+3. [@4] Se $x_n\to\infty$, então para qualquer $\epsilon>0$ existe $N>0$ tal que $n>N$ implica que $x_n>\frac{1}{\epsilon}$. Logo, $0< \frac{1}{x_n}< \epsilon$ para todo $n>N$. Portanto, $n>N$ implica que $d(\frac{1}{x_n},0)< \epsilon$, ou seja, $\frac{1}{x_n}\to 0$.\qedhere
+#+end_proof
+
+#+name: cor2
+#+begin_cor
+Sejam $(x_n)_{n\ge 1}$ e $(y_n)_{n\ge 1}$ sequências de números reais. Tem-se o seguinte:
+1. se $x_n\to\infty$ e $y_n\to\infty$ ou $y_n\to a$, então $(x_n+y_n)\to \infty$;
+2. se $x_n\to\infty$ e $y_n\to\infty$ ou $y_n\to a>0$, então $x_ny_n\to \infty$;
+3. se $x_n\to\infty$ e $y_n\to -\infty$ ou $y_n\to a<0$, então $x_ny_n\to -\infty$.
+Valem resultados análogos no caso em que $x_n\to -\infty$.
+#+end_cor
+
+#+begin_ex
+Para cada $n\in\Z^+$, seja $x_n=2n^2-3n-5$. Vamos mostrar que $x_n\to\infty$. Para isso escrevemos
+$$x_n=n^2\left(2-\frac{3}{n}-\frac{5}{n^2}\right)\,.$$
+Temos que
+$$\lim_{n\to\infty}n^2=\lim_{n\to\infty}n\cdot n=\infty\,,$$
+pois $n\to\infty$. Por outro lado, temos que $(2-\frac{3}{n}-\frac{5}{n^2})\to 2$.
+Portanto, $x_n\to\infty$.
+#+end_ex
+
+Sejam $Y$ um espaço métrico e $f:\R\to Y$ uma função. Diz-se que um ponto $L\in Y$ é o limite de $f(x)$ quando $x$ tende para infinito se, para toda sequência $(x_n)_{n\ge 1}$ de números reais tal que $x_n\to\infty$, tem-se que $f(x_n)\to L$.
+Nesse caso, escreve-se
+$$\lim_{x\to\infty}f(x)=L\,.$$
+O caso $\ds\lim_{x\to-\infty}f(x)=L$ pode ser definido de forma análoga. Além disso, podemos nos convencer facilmente que o teorema [[thm2]] vale da mesma forma para limites no infinito.
+
+#+begin_ex
+Temos que
+$$\lim_{x\to \infty}\frac{1}{x}=0\,,$$
+pois para qualquer sequência $(x_n)_{n\ge 1}$ de números reais tais que $x_n\to \infty$, temos que $\frac{1}{x_n}\to 0$.
+#+end_ex
+
+#+begin_ex
+Vamos avaliar o limite
+$$E=\lim_{x\to\infty}\frac{3x^2-2x+7}{4x^4-5x^2-4}\,.$$
+Para isso notamos que, para qualquer $x\ne 0$,
+$$\frac{3x^2-2x+7}{4x^4-5x^2-4}=\frac{x^2(3-\frac{2}{x}+\frac{7}{x^2})}{x^4(4-\frac{5}{x^2}-\frac{4}{x^4})}=\frac{1}{x^2}\cdot \frac{3-\frac{2}{x}+\frac{7}{x^2}}{4-\frac{5}{x^2}-\frac{4}{x^4}}\,.$$
+Como
+$$\lim_{x\to \infty}\frac{1}{x^2}=0\quad\text{e}\quad \lim_{x\to\infty}\frac{3-\frac{2}{x}+\frac{7}{x^2}}{4-\frac{5}{x^2}-\frac{4}{x^4}}=\frac{3}{4}\,,$$
+segue que
+$$E=\lim_{x\to \infty}\frac{1}{x^2}\cdot\frac{3-\frac{2}{x}+\frac{7}{x^2}}{4-\frac{5}{x^2}-\frac{4}{x^4}}=0\,.$$
+#+end_ex
+
+Sejam $X$ um espaço métrico, $A\subset X$, $f:A\to\R$ uma função e $a\in X$ um ponto de acumulação de $A$.
+Diz-se que $f(x)$ tende para infinito quando $x$ tende para $a$ se, para qualquer sequência $(x_n)_{n\ge 1}$ de pontos de $A-\{a\}$ tal que $x_n\to a$, tem-se que $f(x_n)\to\infty$.
+Nesse caso, escreve-se
+$$\lim_{x\to a}f(x)=\infty\,.$$
+O caso $\ds\lim_{x\to a}f(x)=-\infty$, pode ser definido de forma análoga. Além disso, se $X=\R$, podem-se definir também os casos
+$$\lim_{x\to\infty}f(x)=\pm\infty\quad\text{e}\quad\lim_{x\to-\infty}f(x)=\pm \infty\,.$$
+
+O seguinte teorema é uma consequência direta do teorema [[thm3]] e do corolário [[cor2]]:
+
+#+name: thm4
+#+begin_thm
+Sejam $A\subset\R$, $f,g:A\to \R$ funções reais e $a\in\R$ um ponto de acumulação de $A$ ou $a=\pm\infty$.
+Tem-se que
+
+1. se $\ds\lim_{x\to a}f(x)=\infty$ e $\ds\lim_{x\to a}g(x)=\infty$ ou $\ds\lim_{x\to a}g(x)=L$, então
+ $$\lim_{x\to a}[f(x)+g(x)]=\infty\,;$$
+2. se $\ds\lim_{x\to a}f(x)=\infty$ e $\ds\lim_{x\to a}g(x)=\infty$ ou $\ds\lim_{x\to a}g(x)=L>0$, então
+ $$\ds\lim_{x\to a}f(x)g(x)=\infty\,;$$
+3. se $\ds\lim_{x\to a}f(x)=\infty$ e $\ds\lim_{x\to a}g(x)=-\infty$ ou $\ds\lim_{x\to a}g(x)=L<0$, então
+ $$\ds\lim_{x\to a}f(x)g(x)=-\infty\,;$$
+4. se $\ds\lim_{x\to a}f(x)=\infty$, então $\ds\lim_{x\to a}\frac{1}{f(x)}=0$.
+Valem resultados análogos no caso em que $\ds\lim_{x\to a}f(x)=-\infty$.
+#+end_thm
+
+#+begin_ex
+Vamos mostrar que
+$$\lim_{x\to\infty}\frac{x^3+2}{-2x^2-3x+2}=-\infty\,.$$
+Primeiramente notamos que, para qualquer $x\ne 0$,
+$$\frac{x^3+2}{-2x^2-3x+2}=\frac{x^3(1+\frac{2}{x^3})}{x^2(-2-\frac{3}{x}+\frac{2}{x^2})}=x\cdot \frac{1+\frac{2}{x^3}}{-2-\frac{3}{x}+\frac{2}{x^2}}\,.$$
+Como
+$$\lim_{x\to\infty}x=\infty\quad\text{e}\quad\lim_{x\to\infty}\frac{1+\frac{2}{x^3}}{-2-\frac{3}{x}+\frac{2}{x^2}}=-\frac{1}{2}\,,$$
+temos que
+$$\lim_{x\to\infty}\frac{x^3+2}{-2x^2-3x+2}=\lim_{x\to\infty}x\cdot\frac{1+\frac{2}{x^3}}{-2-\frac{3}{x}+\frac{2}{x^2}}=-\infty\,.$$
+#+end_ex
+
+* Limites laterais
+
+Sejam $A\subset\R$, $f:A\to \R$ uma função e $a\in\R$ um ponto de acumulação de $A$.
+Diz-se que $L\in\R\cup\{\pm\infty\}$ é o limite de $f(x)$ quando $x$ tende para $a$ *pela direita* se, para qualquer sequência $(x_n)_{n\ge 1}$ de números reais maiores do que $a$ tal que $x_n\to a$, tem-se que $f(x_n)\to L$.
+Nesse caso escreve-se
+$$\lim_{x\to a^+}f(x)=L\,.$$
+Por outro lado, diz-se que $M\in\R\cup\{\pm\infty\}$ é o limite de $f(x)$ quando $x$ tende para $a$ *pela esquerda* se, para qualquer sequência $(x_n)_{n\ge 1}$ de números reais menores do que $a$ tal que $x_n\to a$, tem-se que $f(x_n)\to M$. 
+Nesse caso escreve-se
+$$\lim_{x\to a^-}f(x)=M\,.$$
+
+Podemos nos convencer facilmente que os teoremas [[thm2]] e [[thm4]] valem da mesma forma para limites laterais.
+
+#+begin_ex
+Seja a função
+$$f(x)=\begin{cases}
+\frac{x^2-1}{x-1}&\text{se }x>1\\
+x^2-2&\text{se }x< 1\,.\\
+\end{cases}$$
+Vamos avaliar os limites laterais $\ds\lim_{x\to 1^+}f(x)$ e $\ds\lim_{x\to 1^-}f(x)$. Temos que
+$$\lim_{x\to 1^+}f(x)=\lim_{x\to 1^+}\frac{x^2-1}{x-1}=\lim_{x\to 1^+}(x+1)=2\,.$$
+Por outro lado,
+$$\lim_{x\to 1^-}f(x)=\lim_{x\to 1^-}(x^2-2)=-1\,.$$
+#+end_ex
+
+#+begin_thm
+Seja $(x_n)_{n\ge 1}$ uma sequência de números reais tal que $x_n\to 0$. Logo,
+
+1. se $x_n>0$ para todo $n\in\Z^+$, então $\frac{1}{x_n}\to\infty$;
+2. se $x_n< 0$ para todo $n\in\Z^+$, então $\frac{1}{x_n}\to-\infty$.
+#+end_thm
+
+#+begin_proof
+Vamos provar só o item 1. Como $x_n\to 0$, dado qualquer $A>0$, existe $N>0$ tal que $n>N$ implica que $|x_n|< \frac{1}{A}$, ou seja, $\frac{1}{|x_n|}>A$.
+Se $x_n>0$ para todo $n\in\Z^+$, temos que $\frac{1}{x_n}>A$ para todo $n>N$. Portanto, $\frac{1}{x_n}\to\infty$.
+#+end_proof
+
+#+begin_cor
+Sejam $A\subset\R$, $f:A\to\R$ uma função e $a\in\R$ um ponto de acumulação de $A$.
+1. Se $\ds\lim_{x\to a^+}f(x)=0$ e $f(x)>0$ para todo $x>a$, então $\ds\lim_{x\to a^+}\frac{1}{f(x)}=\infty$.
+2. Se $\ds\lim_{x\to a^+}f(x)=0$ e $f(x)< 0$ para todo $x>a$, então $\ds\lim_{x\to a^+}\frac{1}{f(x)}=-\infty$.
+Resultados análogos valem no caso em que $\ds\lim_{x\to a^-}f(x)=0$.
+#+end_cor
+
+#+begin_ex
+Vamos mostrar que
+$$\lim_{x\to 2^+}\frac{3}{4-x^2}=-\infty\,.$$
+Para isso, primeiramente notamos que
+$$\frac{3}{4-x^2}=\frac{3}{(2-x)(2+x)}=\frac{1}{2-x}\cdot\frac{3}{2+x}\,.$$
+Logo, como
+$$\lim_{x\to 2^+}\frac{1}{2-x}=-\infty\quad\text{e}\quad\lim_{x\to 2^+}\frac{3}{2+x}=\frac{3}{4}\,,$$
+temos que
+$$\lim_{x\to 2^+}\frac{1}{2-x}\cdot\frac{3}{2+x}=-\infty\,.$$
+#+end_ex
+
+#+begin_thm
+Sejam $A\subset\R$, $f:A\to\R$, $a\in\R$ um ponto de acumulação e $L,M\in\mathbb{R}\cup\{\pm\infty\}$. Tem-se o seguinte: 
+
+1. se $\ds\lim_{x\to a^+}f(x)=L$ e $\ds\lim_{x\to a^-}f(x)=L$, então $\ds\lim_{x\to a}f(x)=L$;
+2. se $\ds\lim_{x\to a^+}f(x)=L$, $\ds\lim_{x\to a^-}f(x)=M$ e $L\ne M$, então $\ds\lim_{x\to a}f(x)$ não existe.
+#+end_thm
+
+#+begin_proof
+$\text{ }$
+
+1. Suponhamos que $\ds\lim_{x\to a^+}f(x)=L$ e $\ds\lim_{x\to a^-}f(x)=L$.
+ Se não temos $\ds\lim_{x\to a}f(x)=L$, então existe uma sequência $(x_n)_{n\ge 1}$ de pontos de $A-\{a\}$ tal que $x_n\to a$, mas $f(x_n)\not\to L$.
+ Logo, podemos definir uma subsequência $(x_{n_k})_{k\ge 1}$ considerando somente os termos maiores do que $a$ da sequência $(x_n)_{n\ge 1}$ e uma outra subsequência $(x_{m_k})_{k\ge 1}$ considerando somente os termos menores do que $a$ da sequência $(x_n)_{n\ge 1}$.
+ Como $x_n\to a$, tem-se que $x_{n_k}\to a$ e $x_{m_k}\to a$. No entanto, não podemos ter $f(x_{n_k})\to L$ e $f(x_{m_k})\to L$, pois isso implicaria que $f(x_n)\to L$.
+ Logo, $f(x_{n_k})\not\to L$ ou $f(x_{m_k})\not\to L$, contradizendo a hipótese de que $\ds\lim_{x\to a^+}f(x)=L$ e $\ds\lim_{x\to a^-}f(x)=L$. Portanto, devemos ter $\ds\lim_{x\to a}f(x)=L$.
+2. Suponhamos que $\ds\lim_{x\to a^+}f(x)=L$ e $\ds\lim_{x\to a^-}f(x)=M$ e $L\ne M$. Se $\ds\lim_{x\to a}f(x)=K$, com $K\in\R\cup\{\pm\infty\}$, então para toda sequência $(x_n)_{n\ge 1}$ de pontos de $A-\{a\}$ tal que $x_n\to a$, tem-se que $f(x_n)\to K$.
+ Em particular isso deve ser verdade se $x_n>a$ para todo $n\in\Z^+$ ou se $x_n< a$ para todo $n\in\Z^+$. Porém, isso é impossível, pois pelo menos uma das seguintes afirmações é verdadeira: $K\ne L$ ou $K\ne M$. Portanto, $\ds\lim_{x\to a}f(x)$ não deve existir.\qedhere
+#+end_proof

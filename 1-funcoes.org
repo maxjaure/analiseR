@@ -284,7 +284,7 @@ Isso quer dizer que a divisão $\frac{f(x)}{x-(-1)}$ é exata. De fato, usando o
 $$\begin{matrix}
 &|&1&-5&2&8\\
 -1&|&&-1&6&-8\\
-\hline\\
+\hline
 &|&1&-6&8&0
 \end{matrix}$$
 Logo,
